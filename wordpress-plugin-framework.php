@@ -77,7 +77,7 @@ class WordPress_Plugin_Framework {
 	 *
 	 * @return void
 	 */
-	private function activation() {
+	public function activation() {
 
 	}
 
@@ -88,7 +88,7 @@ class WordPress_Plugin_Framework {
 	 *
 	 * @return void
 	 */
-	private function deactivation() {
+	public function deactivation() {
 
 	}
 
@@ -99,7 +99,7 @@ class WordPress_Plugin_Framework {
 	 *
 	 * @return void
 	 */
-	private function register_scripts() {
+	public function register_scripts() {
 
 	}
 
@@ -110,7 +110,7 @@ class WordPress_Plugin_Framework {
 	 *
 	 * @return void
 	 */
-	private function register_styles() {
+	public function register_styles() {
 
 	}
 

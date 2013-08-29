@@ -18,6 +18,10 @@
 class WordPress_Plugin_Framework {
 	/** @var null|WordPress_Plugin_Framework Refers to a single instance of this class. */
 	private static $instance = null;
+	/** @var  string The path to the plugin file. */
+	private $plugin_path;
+	/** @var  string The URL to the plugin file. */
+	private $plugin_url;
 
 	/**
 	 * Creates or returns an instance of this class.
@@ -39,7 +43,8 @@ class WordPress_Plugin_Framework {
 	 * Add this code as needed.
 	 */
 	private function __construct() {
-
+		$this->plugin_path = dirname( __FILE__ );
+		$this->plugin_url = WP_PLUGIN_URL . '/wordpress-plugin-framework';
 	}
 }
 

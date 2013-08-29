@@ -18,9 +18,15 @@
 class WordPress_Plugin_Framework {
 	/** @var null|WordPress_Plugin_Framework Refers to a single instance of this class. */
 	private static $instance = null;
+	/** @var  string The path to the plugin file. */
+	private $plugin_path;
+	/** @var  string The URL to the plugin file. */
+	private $plugin_url;
 
 	/**
 	 * Creates or returns an instance of this class.
+	 *
+	 * @since 1.0.0
 	 *
 	 * @return WordPress_Plugin_Framework A single instance of this class.
 	 */
@@ -36,9 +42,66 @@ class WordPress_Plugin_Framework {
 	/**
 	 * Initializes the plugin by setting localization, filters, and administration functions.
 	 *
-	 * Add this code as needed.
+	 * @since 1.0.0
 	 */
 	private function __construct() {
+		/* Set properties. */
+		$this->plugin_path = dirname( __FILE__ );
+		$this->plugin_url = WP_PLUGIN_URL . '/wordpress-plugin-framework';
+
+		/* Load text domain. */
+		load_plugin_textdomain( 'wordpress-plugin-framework', false, $this->plugin_path . '/lang' );
+
+		/* Load scripts and styles */
+		add_action( 'wp_enqueue_scripts', array( $this, 'register_scripts' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'register_styles' ) );
+
+		/* Register activation and deactivation hooks. */
+		register_activation_hook( __FILE__, array( $this, 'activation' ) );
+		register_deactivation_hook( __FILE__, array( $this, 'deactivation' ) );
+	}
+
+	/**
+	 * This method runs at plugin activation.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return void
+	 */
+	private function activation() {
+
+	}
+
+	/**
+	 * This method runs at plugin deactivation.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return void
+	 */
+	private function deactivation() {
+
+	}
+
+	/**
+	 * Place any scripts that need to be registered with WordPress in this method.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return void
+	 */
+	private function register_scripts() {
+
+	}
+
+	/**
+	 * Place any styles that need to be registered with WordPress in this method.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return void
+	 */
+	private function register_styles() {
 
 	}
 }

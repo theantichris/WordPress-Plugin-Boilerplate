@@ -15,10 +15,14 @@
  * TODO: Replace "WordPress Plugin Framework" with "Plugin Name".
  * TODO: Replace "WordPress_Plugin_Framework" with "Plugin_Name".
  * TODO: Replace "wordpress-plugin-framework" with "plugin-name".
+ * TODO: Replace "WordPressPluginFramework" with "PluginName".
  */
 
 /**
  * Class WordPress_Plugin_Framework
+ *
+ * @package WordPress
+ * @subpackage WordPressPluginFramework
  *
  * @since 1.0.0
  */

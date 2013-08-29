@@ -49,6 +49,9 @@ class WordPress_Plugin_Framework {
 		$this->plugin_path = dirname( __FILE__ );
 		$this->plugin_url = WP_PLUGIN_URL . '/wordpress-plugin-framework';
 
+		/* Load text domain. */
+		load_plugin_textdomain( 'wordpress-plugin-framework', false, $this->plugin_path . '/lang' );
+
 		/* Register activation and deactivation hooks. */
 		register_activation_hook( __FILE__, array( $this, 'activation' ) );
 		register_deactivation_hook( __FILE__, array( $this, 'deactivation' ) );

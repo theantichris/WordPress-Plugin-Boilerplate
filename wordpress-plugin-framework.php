@@ -26,6 +26,8 @@ class WordPress_Plugin_Framework {
 	/**
 	 * Creates or returns an instance of this class.
 	 *
+	 * @since 1.0.0
+	 *
 	 * @return WordPress_Plugin_Framework A single instance of this class.
 	 */
 	public static function get_instance() {
@@ -40,7 +42,7 @@ class WordPress_Plugin_Framework {
 	/**
 	 * Initializes the plugin by setting localization, filters, and administration functions.
 	 *
-	 * Add this code as needed.
+	 * @since 1.0.0
 	 */
 	private function __construct() {
 		$this->plugin_path = dirname( __FILE__ );

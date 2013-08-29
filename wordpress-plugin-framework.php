@@ -10,6 +10,13 @@
   License: GPL V2
  */
 
+/*
+ * TODO: Replace plugin information header above.
+ * TODO: Replace "WordPress Plugin Framework" with "Plugin Name".
+ * TODO: Replace "WordPress_Plugin_Framework" with "Plugin_Name".
+ * TODO: Replace "wordpress-plugin-framework" with "plugin-name".
+ */
+
 /**
  * Class WordPress_Plugin_Framework
  *
@@ -42,7 +49,7 @@ class WordPress_Plugin_Framework {
 	}
 
 	/**
-	 * Initializes the plugin by setting localization, filters, and administration functions.
+	 * Initializes the plugin by setting localization, hooks, filters, and administrative functions.
 	 *
 	 * @since 1.0.0
 	 */

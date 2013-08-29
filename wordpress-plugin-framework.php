@@ -52,6 +52,10 @@ class WordPress_Plugin_Framework {
 		/* Load text domain. */
 		load_plugin_textdomain( 'wordpress-plugin-framework', false, $this->plugin_path . '/lang' );
 
+		/* Load scripts and styles */
+		add_action( 'wp_enqueue_scripts', array( $this, 'register_scripts' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'register_styles' ) );
+
 		/* Register activation and deactivation hooks. */
 		register_activation_hook( __FILE__, array( $this, 'activation' ) );
 		register_deactivation_hook( __FILE__, array( $this, 'deactivation' ) );
@@ -76,6 +80,28 @@ class WordPress_Plugin_Framework {
 	 * @return void
 	 */
 	private function deactivation() {
+
+	}
+
+	/**
+	 * Place any scripts that need to be registered with WordPress in this method.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return void
+	 */
+	private function register_scripts() {
+
+	}
+
+	/**
+	 * Place any styles that need to be registered with WordPress in this method.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return void
+	 */
+	private function register_styles() {
 
 	}
 }

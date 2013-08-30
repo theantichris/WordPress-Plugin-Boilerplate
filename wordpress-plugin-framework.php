@@ -4,7 +4,7 @@
   Plugin Name: WordPress Plugin Framework
   Plugin URI: https://github.com/theantichris/WordPress-Plugin-Framework
   Description: My own framework for making WordPress plugins the way I do.
-  Version: 1.0.0
+  Version: 1.0.1
   Author: Christopher Lamm
   Author URI: http://www.theantichris.com
   License: GPL V2
@@ -29,8 +29,6 @@
 class WordPress_Plugin_Framework {
 	/** @var null|WordPress_Plugin_Framework Refers to a single instance of this class. */
 	private static $instance = null;
-	/** @var  string The text domain for the plugin to use for i18n and l10n. */
-	private $text_domain = 'wordpress-plugin-framework';
 	/** @var  string The path to the plugin file. */
 	private $plugin_path;
 	/** @var  string The URL to the plugin file. */
@@ -63,7 +61,7 @@ class WordPress_Plugin_Framework {
 		$this->plugin_url = WP_PLUGIN_URL . '/wordpress-plugin-framework';
 
 		/* Load text domain. */
-		load_plugin_textdomain( $this->text_domain, false, $this->plugin_path . '/lang' );
+		load_plugin_textdomain( 'wordpress-plugin-framework', false, $this->plugin_path . '/lang' );
 
 		/* Load scripts and styles */
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_scripts' ) );
@@ -142,19 +140,6 @@ class WordPress_Plugin_Framework {
 				error_log( $message );
 			}
 		}
-	}
-
-	/**
-	 * Translates/localizes text through the plugin's text domain.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @param string $message The message to translate/localize.
-	 *
-	 * @return string|void
-	 */
-	private function translate( $message ) {
-		return __( $message, $this->text_domain );
 	}
 }
 

@@ -21,10 +21,10 @@
 /**
  * Class WordPress_Plugin_Framework
  *
- * @package WordPress
+ * @package    WordPress
  * @subpackage WordPressPluginFramework
  *
- * @since 1.0.0
+ * @since      1.0.0
  */
 class WordPress_Plugin_Framework {
 	/** @var null|WordPress_Plugin_Framework Refers to a single instance of this class. */
@@ -116,6 +116,32 @@ class WordPress_Plugin_Framework {
 	 */
 	public function register_styles() {
 
+	}
+
+	/**
+	 * If WordPress debugging is turned on this method will write data to debug.log located in the wp-content directory.
+	 *
+	 * Add the following lines to wp-config.php:
+	 *
+	 * define( 'WP_DEBUG', true );  // Turn debugging ON
+	 * define( 'SAVEQUERIES', true );
+	 * define( 'WP_DEBUG_DISPLAY', false ); // Turn forced display OFF
+	 * define( 'WP_DEBUG_LOG', true );  // Turn logging to wp-content/debug.log ON
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param mixed $message Message to pass to the error log.
+	 *
+	 * @return void
+	 */
+	private function print_to_log( $message ) {
+		if ( true === WP_DEBUG ) {
+			if ( is_array( $message ) || is_object( $message ) ) {
+				error_log( print_r( $message ), true );
+			} else {
+				error_log( $message );
+			}
+		}
 	}
 
 	/**

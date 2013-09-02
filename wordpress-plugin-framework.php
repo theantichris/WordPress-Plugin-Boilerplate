@@ -56,6 +56,9 @@ class WordPress_Plugin_Framework {
 	 * @since 1.0.0
 	 */
 	private function __construct() {
+		/* Includes */
+		include_once 'inc/custom-post-type.php';
+
 		/* Set properties. */
 		$this->plugin_path = dirname( __FILE__ );
 		$this->plugin_url = WP_PLUGIN_URL . '/wordpress-plugin-framework';
@@ -132,7 +135,7 @@ class WordPress_Plugin_Framework {
 	 *
 	 * @return void
 	 */
-	private function print_to_log( $message ) {
+	public static function print_to_log( $message ) {
 		if ( true === WP_DEBUG ) {
 			if ( is_array( $message ) || is_object( $message ) ) {
 				error_log( print_r( $message ), true );
@@ -140,6 +143,48 @@ class WordPress_Plugin_Framework {
 				error_log( $message );
 			}
 		}
+	}
+
+	/**
+	 * Takes a plural string and returns the singular version.
+	 *
+	 * Solution found at https://sites.google.com/site/chrelad/notes-1/pluraltosingularwithphp.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @param string $word Plural string to make singular.
+	 *
+	 * @return string
+	 */
+	public static function make_singular( $word ) {
+		$rules = array(
+			'ss' => false,
+			'os' => 'o',
+			'ies' => 'y',
+			'xes' => 'x',
+			'oes' => 'o',
+			'ves' => 'f',
+			's' => ''
+		);
+
+		// Loop through all the rules and do the replacement.
+		foreach ( array_keys( $rules ) as $key ) {
+			// If the end of the word doesn't match the key, it's not a candidate for replacement. Move on to the next plural ending.
+
+			if ( substr( $word, ( strlen( $key ) * -1 ) ) != $key ) {
+				continue;
+			}
+
+			// If the value of the key is false, stop looping and return the original version of the word.
+			if ( $key === false ) {
+				return $word;
+			}
+
+			// We've made it this far, so we can do the replacement.
+			return substr( $word, 0, strlen( $word ) - strlen( $key ) ) . $rules[ $key ];
+		}
+
+		return $word;
 	}
 }
 

@@ -9,7 +9,7 @@
  * @link      http://www.theantichris.com
  */
 
-class CustomPostType {
+class Custom_Post_Type {
 	/** @var  string User readable name of the post type. Must be plural. */
 	private $post_type_name;
 	/** @var  string WordPress ID of the post type. */

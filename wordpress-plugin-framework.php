@@ -56,6 +56,9 @@ class WordPress_Plugin_Framework {
 	 * @since 1.0.0
 	 */
 	private function __construct() {
+		/* Includes */
+		include_once 'inc/custom-post-type.php';
+
 		/* Set properties. */
 		$this->plugin_path = dirname( __FILE__ );
 		$this->plugin_url = WP_PLUGIN_URL . '/wordpress-plugin-framework';
@@ -70,6 +73,9 @@ class WordPress_Plugin_Framework {
 		/* Register activation and deactivation hooks. */
 		register_activation_hook( __FILE__, array( $this, 'activation' ) );
 		register_deactivation_hook( __FILE__, array( $this, 'deactivation' ) );
+
+		/* Custom hooks and filters. */
+		$new_post_type = new CustomPostType( 'Event' );
 	}
 
 	/**

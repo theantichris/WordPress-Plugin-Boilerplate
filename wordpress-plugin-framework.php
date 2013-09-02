@@ -75,7 +75,7 @@ class WordPress_Plugin_Framework {
 		register_deactivation_hook( __FILE__, array( $this, 'deactivation' ) );
 
 		/* Custom hooks and filters. */
-		$new_post_type = new CustomPostType( 'Event' );
+		$new_post_type = new CustomPostType( 'Events' );
 	}
 
 	/**

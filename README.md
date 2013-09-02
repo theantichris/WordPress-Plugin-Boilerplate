@@ -12,14 +12,24 @@ A blank uninstall file is included and setup correctly to make sure it is only c
 
 Additional methods and classes will be built out as I get to them to further simplify the various WordPress APIs I use.
 
+## Custom Post Types
+
+You can create a custom post type through the CustomPostType object. Inside the main classes' constructor create one like you would any other object.
+
+Ex.: $new_post_type = new Custom_Post_Type( $plural_post_type_name );
+
 ## Helper Functions
 
 I include some helper functions within the main class of the framework. They are public, static functions so can be used anywhere.
 
 ### print_to_log()
 
-Writes a message to debug.log in the wp-content folder if you have the wp-config.php setup to do that.
+Writes a message to debug.log in the wp-content folder if you have the wp-config.php setup to do that. It will accept any variable or string.
+
+Ex.: WordPress_Plugin_Framework::print_to_log( $message_to_send ).
 
 ### make_singular()
 
 Takes a plural string and makes it singular.
+
+Ex.: $singular_string = WordPress_Plugin_Framework::make_singular( $plural_string );

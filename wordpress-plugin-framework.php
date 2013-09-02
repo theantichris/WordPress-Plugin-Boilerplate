@@ -138,7 +138,7 @@ class WordPress_Plugin_Framework {
 	 *
 	 * @return void
 	 */
-	private function print_to_log( $message ) {
+	public static function print_to_log( $message ) {
 		if ( true === WP_DEBUG ) {
 			if ( is_array( $message ) || is_object( $message ) ) {
 				error_log( print_r( $message ), true );

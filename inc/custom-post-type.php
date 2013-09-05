@@ -67,7 +67,7 @@ class Custom_Post_Type {
 	 *
 	 * @return void
 	 */
-	public  function register_custom_post_type() {
+	public function register_custom_post_type() {
 		register_post_type( $this->post_type_slug, $this->post_type_args );
 	}
 }

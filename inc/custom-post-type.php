@@ -46,8 +46,8 @@ class Custom_Post_Type {
 			'all_items' => 'All ' . $this->post_type_name,
 			'view_item' => 'View ' . $singular,
 			'search_items' => 'Search ' . $this->post_type_name,
-			'not_found' => 'No ' . strtolower( $this->post_type_name ) . ' found',
-			'not_found_in_trash' => 'No ' . strtolower( $this->post_type_name ) . ' found in Trash',
+			'not_found' => 'No ' . strtolower( $this->post_type_name ) . ' found.',
+			'not_found_in_trash' => 'No ' . strtolower( $this->post_type_name ) . ' found in Trash.',
 			'parent_item_colon' => '',
 			'menu_name' => $this->post_type_name
 		);

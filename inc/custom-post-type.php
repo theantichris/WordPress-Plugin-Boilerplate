@@ -22,6 +22,8 @@ class Custom_Post_Type {
 	private $post_type_args = array();
 	/** @var array Labels for the post type. */
 	private $post_type_labels = array();
+	/** @var  string URL to the plugin file. */
+	private $menu_icon;
 
 	/**
 	 * Class constructor.
@@ -29,10 +31,12 @@ class Custom_Post_Type {
 	 * @since 2.0.0
 	 *
 	 * @param string $post_type_name User readable name of the post type. Must be plural.
+	 * @param string|null   $menu_icon URL to the post type's menu icon.
 	 */
-	function __construct( $post_type_name ) {
+	function __construct( $post_type_name, $menu_icon = null ) {
 		$this->post_type_name = $post_type_name;
 		$this->post_type_slug = str_replace( ' ', '-', strtolower( $post_type_name ) );
+		$this->menu_icon = null;
 
 		$singular = WordPress_Plugin_Framework::make_singular( $this->post_type_name );
 
@@ -54,7 +58,8 @@ class Custom_Post_Type {
 
 		$this->post_type_args = array(
 			'labels' => $this->post_type_labels,
-			'public' => true
+			'public' => true,
+			'menu_icon' => $this->menu_icon
 		);
 
 		add_action( 'init', array( $this, 'register_custom_post_type' ) );

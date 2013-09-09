@@ -18,7 +18,13 @@ You can create a custom post type through the CustomPostType object. The class a
 
 Create new custom post types in the main plugin class constructor.
 
-Basic Ex.: $new_post_type = new Custom_Post_Type( $plural_post_type_name, $capabilities, $support, $menu_icon );
+Ex.: $new_post_type = new Custom_Post_Type( $plural_post_type_name, $capabilities, $support, $menu_icon );
+
+### Taxonomies
+
+Taxonomies can be added to custom post type using the add_taxonomy() method. The $args parameter is optional and will use the WordPress default if not specified.
+
+Ex.: $new_post_type->add_taxonomy( $taxonomy_name, $args );
 
 ## Helper Functions
 

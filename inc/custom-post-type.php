@@ -26,12 +26,12 @@ class Custom_Post_Type {
 	private $menu_icon;
 	/** @var array Capabilities to set for the post type. */
 	private $capabilities = array(
-		'edit_post' => 'edit_post',
-		'read_post' => 'read_post',
-		'delete_post' => 'delete_post',
-		'edit_posts' => 'edit_posts',
-		'edit_others_posts' => 'edit_others_post',
-		'publish_posts' => 'publish_posts',
+		'edit_post'          => 'edit_post',
+		'read_post'          => 'read_post',
+		'delete_post'        => 'delete_post',
+		'edit_posts'         => 'edit_posts',
+		'edit_others_posts'  => 'edit_others_post',
+		'publish_posts'      => 'publish_posts',
 		'read_private_posts' => 'read_private_posts'
 	);
 	/** @var array $supports What features the post type supports. */
@@ -64,27 +64,27 @@ class Custom_Post_Type {
 		$singular = WordPress_Plugin_Framework::make_singular( $this->post_type_name );
 
 		$this->post_type_labels = array(
-			'name' => $this->post_type_name,
-			'singular_name' => $singular,
-			'add_new' => 'Add New',
-			'add_new_item' => 'Add New ' . $singular,
-			'edit_item' => 'Edit ' . $singular,
-			'new_item' => 'New ' . $singular,
-			'all_items' => 'All ' . $this->post_type_name,
-			'view_item' => 'View ' . $singular,
-			'search_items' => 'Search ' . $this->post_type_name,
-			'not_found' => 'No ' . strtolower( $this->post_type_name ) . ' found.',
+			'name'               => $this->post_type_name,
+			'singular_name'      => $singular,
+			'add_new'            => 'Add New',
+			'add_new_item'       => 'Add New ' . $singular,
+			'edit_item'          => 'Edit ' . $singular,
+			'new_item'           => 'New ' . $singular,
+			'all_items'          => 'All ' . $this->post_type_name,
+			'view_item'          => 'View ' . $singular,
+			'search_items'       => 'Search ' . $this->post_type_name,
+			'not_found'          => 'No ' . strtolower( $this->post_type_name ) . ' found.',
 			'not_found_in_trash' => 'No ' . strtolower( $this->post_type_name ) . ' found in Trash.',
-			'parent_item_colon' => '',
-			'menu_name' => $this->post_type_name
+			'parent_item_colon'  => '',
+			'menu_name'          => $this->post_type_name
 		);
 
 		$this->post_type_args = array(
-			'labels' => $this->post_type_labels,
-			'public' => true,
-			'menu_icon' => $this->menu_icon,
+			'labels'       => $this->post_type_labels,
+			'public'       => true,
+			'menu_icon'    => $this->menu_icon,
 			'capabilities' => $this->capabilities,
-			'supports' => $this->supports
+			'supports'     => $this->supports
 		);
 
 		add_action( 'init', array( $this, 'register_custom_post_type' ) );
@@ -101,5 +101,49 @@ class Custom_Post_Type {
 		if ( !post_type_exists( $this->post_type_slug ) ) {
 			register_post_type( $this->post_type_slug, $this->post_type_args );
 		}
+	}
+
+	/**
+	 * Registers a taxonomy with the custom post type.
+	 *
+	 * @since 2.3.0
+	 *
+	 * @param string     $taxonomy_name User readable name for the taxonomy.
+	 * @param array|null $args          Arguments to pass to register_taxonomy.
+	 *
+	 * @return void
+	 */
+	public function add_taxonomy( $taxonomy_name, $args = null ) {
+		$post_type_slug = $this->post_type_slug;
+		$taxonomy_slug  = str_replace( ' ', '-', strtolower( $taxonomy_name ) );
+		$singular       = WordPress_Plugin_Framework::make_singular( $taxonomy_name );
+
+		$labels = array(
+			'name'              => _x( $taxonomy_name, 'taxonomy general name' ),
+			'singular_name'     => _x( $singular, 'taxonomy singular name' ),
+			'search_items'      => __( 'Search ' . $taxonomy_name ),
+			'all_items'         => __( 'All ' . $taxonomy_name ),
+			'parent_item'       => __( 'Parent ' . $singular ),
+			'parent_item_colon' => __( 'Parent ' . $singular . ':' ),
+			'edit_item'         => __( 'Edit ' . $singular ),
+			'update_item'       => __( 'Update ' . $singular ),
+			'add_new_item'      => __( 'Add New ' . $singular ),
+			'new_item_name'     => __( 'New ' . $singular . ' Name' ),
+			'menu_name'         => __( $singular ),
+		);
+
+		// If no arguments are specified use the WordPress default with the exception of the labels.
+		if ( empty( $args ) ) {
+			$args = array(
+				'labels' => $labels
+			);
+		}
+
+		// Use an anonymous function to register the action with the hook.
+		add_action( 'init', function () use ( $taxonomy_slug, $post_type_slug, $args ) {
+			if ( !taxonomy_exists( $taxonomy_slug ) ) {
+				register_taxonomy( $taxonomy_slug, $post_type_slug, $args );
+			}
+		} );
 	}
 }

@@ -61,13 +61,15 @@ class Custom_Post_Type {
 	}
 
 	/**
-	 * Registers the custom post type with WordPress.
+	 * Registers the custom post type with WordPress if it does not already exists.
 	 *
 	 * @since 2.0.0
 	 *
 	 * @return void
 	 */
 	public function register_custom_post_type() {
-		register_post_type( $this->post_type_slug, $this->post_type_args );
+		if ( !post_type_exists( $this->post_type_slug ) ) {
+			register_post_type( $this->post_type_slug, $this->post_type_args );
+		}
 	}
 }

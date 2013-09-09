@@ -14,9 +14,11 @@ Additional methods and classes will be built out as I get to them to further sim
 
 ## Custom Post Types
 
-You can create a custom post type through the CustomPostType object. Inside the main classes' constructor create one like you would any other object.
+You can create a custom post type through the CustomPostType object. The class accepts optional arguments for post capabilities (array), post support ( array ), and menu icon (string). If nothing is specified they are set to the WordPress default
 
-Ex.: $new_post_type = new Custom_Post_Type( $plural_post_type_name );
+Create new custom post types in the main plugin class constructor.
+
+Basic Ex.: $new_post_type = new Custom_Post_Type( $plural_post_type_name, $capabilities, $support, $menu_icon );
 
 ## Helper Functions
 

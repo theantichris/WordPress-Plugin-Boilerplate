@@ -103,9 +103,20 @@ class Custom_Post_Type {
 		}
 	}
 
+	/**
+	 * Registers a taxonomy with the custom post type.
+	 *
+	 * @since 2.3.0
+	 *
+	 * @param string     $taxonomy_name User readable name for the taxonomy.
+	 * @param array|null $args          Arguments to pass to register_taxonomy.
+	 *
+	 * @return void
+	 */
 	public function add_taxonomy( $taxonomy_name, $args = null ) {
-		$slug     = str_replace( ' ', '-', strtolower( $taxonomy_name ) );
-		$singular = WordPress_Plugin_Framework::make_singular( $taxonomy_name );
+		$post_type_slug = $this->post_type_slug;
+		$taxonomy_slug  = str_replace( ' ', '-', strtolower( $taxonomy_name ) );
+		$singular       = WordPress_Plugin_Framework::make_singular( $taxonomy_name );
 
 		$labels = array(
 			'name'              => _x( $taxonomy_name, 'taxonomy general name' ),
@@ -118,13 +129,19 @@ class Custom_Post_Type {
 			'update_item'       => __( 'Update ' . $singular ),
 			'add_new_item'      => __( 'Add New ' . $singular ),
 			'new_item_name'     => __( 'New ' . $singular . ' Name' ),
-			'menu_name'         => __( 'Singular' ),
+			'menu_name'         => __( $singular ),
 		);
 
+		// If no arguments are specified use the WordPress default with the exception of the labels.
 		if ( empty( $args ) ) {
 			$args = array(
 				'labels' => $labels
 			);
 		}
+
+		// Use an anonymous function to register the action with the hook.
+		add_action( 'init', function () use ( $taxonomy_slug, $post_type_slug, $args ) {
+			register_taxonomy( $taxonomy_slug, $post_type_slug, $args );
+		} );
 	}
 }

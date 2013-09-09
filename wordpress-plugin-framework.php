@@ -73,6 +73,8 @@ class WordPress_Plugin_Framework {
 		/* Register activation and deactivation hooks. */
 		register_activation_hook( __FILE__, array( $this, 'activation' ) );
 		register_deactivation_hook( __FILE__, array( $this, 'deactivation' ) );
+
+		$test_post_type = new Custom_Post_Type( 'Tests' );
 	}
 
 	/**

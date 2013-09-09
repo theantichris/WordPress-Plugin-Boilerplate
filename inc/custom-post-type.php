@@ -24,19 +24,35 @@ class Custom_Post_Type {
 	private $post_type_labels = array();
 	/** @var  string URL to the plugin file. */
 	private $menu_icon;
+	/** @var array Capabilities to set for the post type. */
+	private $capabilities = array(
+		'edit_post' => 'edit_post',
+		'read_post' => 'read_post',
+		'delete_post' => 'delete_post',
+		'edit_posts' => 'edit_posts',
+		'edit_others_posts' => 'edit_others_post',
+		'publish_posts' => 'publish_posts',
+		'read_private_posts' => 'read_private_posts'
+	);
 
 	/**
 	 * Class constructor.
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param string $post_type_name User readable name of the post type. Must be plural.
-	 * @param string|null   $menu_icon URL to the post type's menu icon.
+	 * @param string      $post_type_name User readable name of the post type. Must be plural.
+	 * @param  array|null $capabilities   Capabilities to set for the post type.
+	 * @param string|null $menu_icon      URL to the post type's menu icon.
 	 */
-	function __construct( $post_type_name, $menu_icon = null ) {
+	function __construct( $post_type_name, $capabilities = null, $menu_icon = null ) {
 		$this->post_type_name = $post_type_name;
 		$this->post_type_slug = str_replace( ' ', '-', strtolower( $post_type_name ) );
-		$this->menu_icon = null;
+
+		if ( !empty( $capabilities ) ) {
+			$this->capabilities = $capabilities;
+		}
+
+		$this->menu_icon = $menu_icon;
 
 		$singular = WordPress_Plugin_Framework::make_singular( $this->post_type_name );
 
@@ -59,7 +75,8 @@ class Custom_Post_Type {
 		$this->post_type_args = array(
 			'labels' => $this->post_type_labels,
 			'public' => true,
-			'menu_icon' => $this->menu_icon
+			'menu_icon' => $this->menu_icon,
+			'capabilities' => $this->capabilities
 		);
 
 		add_action( 'init', array( $this, 'register_custom_post_type' ) );

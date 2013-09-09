@@ -34,6 +34,8 @@ class Custom_Post_Type {
 		'publish_posts' => 'publish_posts',
 		'read_private_posts' => 'read_private_posts'
 	);
+	/** @var array $supports What features the post type supports. */
+	private $supports = array( 'title', 'editor' );
 
 	/**
 	 * Class constructor.
@@ -42,14 +44,19 @@ class Custom_Post_Type {
 	 *
 	 * @param string      $post_type_name User readable name of the post type. Must be plural.
 	 * @param array|null  $capabilities   Capabilities to set for the post type.
+	 * @param array|null  $supports       What features the post type supports.
 	 * @param string|null $menu_icon      URL to the post type's menu icon.
 	 */
-	function __construct( $post_type_name, $capabilities = null, $menu_icon = null ) {
+	function __construct( $post_type_name, $capabilities = null, $supports = null, $menu_icon = null ) {
 		$this->post_type_name = $post_type_name;
 		$this->post_type_slug = str_replace( ' ', '-', strtolower( $post_type_name ) );
 
 		if ( !empty( $capabilities ) ) {
 			$this->capabilities = $capabilities;
+		}
+
+		if ( !empty( $capabilities ) ) {
+			$this->supports = $supports;
 		}
 
 		$this->menu_icon = $menu_icon;
@@ -76,7 +83,8 @@ class Custom_Post_Type {
 			'labels' => $this->post_type_labels,
 			'public' => true,
 			'menu_icon' => $this->menu_icon,
-			'capabilities' => $this->capabilities
+			'capabilities' => $this->capabilities,
+			'supports' => $this->supports
 		);
 
 		add_action( 'init', array( $this, 'register_custom_post_type' ) );

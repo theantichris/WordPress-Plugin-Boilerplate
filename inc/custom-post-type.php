@@ -141,7 +141,9 @@ class Custom_Post_Type {
 
 		// Use an anonymous function to register the action with the hook.
 		add_action( 'init', function () use ( $taxonomy_slug, $post_type_slug, $args ) {
-			register_taxonomy( $taxonomy_slug, $post_type_slug, $args );
+			if ( !taxonomy_exists( $taxonomy_slug ) ) {
+				register_taxonomy( $taxonomy_slug, $post_type_slug, $args );
+			}
 		} );
 	}
 }

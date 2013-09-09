@@ -41,7 +41,7 @@ class Custom_Post_Type {
 	 * @since 2.0.0
 	 *
 	 * @param string      $post_type_name User readable name of the post type. Must be plural.
-	 * @param  array|null $capabilities   Capabilities to set for the post type.
+	 * @param array|null  $capabilities   Capabilities to set for the post type.
 	 * @param string|null $menu_icon      URL to the post type's menu icon.
 	 */
 	function __construct( $post_type_name, $capabilities = null, $menu_icon = null ) {

@@ -60,8 +60,8 @@ class WordPress_Plugin_Framework {
 		include_once 'inc/custom-post-type.php';
 
 		/* Set properties. */
-		$this->plugin_path = dirname( __FILE__ );
-		$this->plugin_url = WP_PLUGIN_URL . '/wordpress-plugin-framework';
+		$this->plugin_path = plugin_dir_path( __FILE__ );
+		$this->plugin_url = plugin_dir_url( __FILE__ );
 
 		/* Load text domain. */
 		load_plugin_textdomain( 'wordpress-plugin-framework', false, $this->plugin_path . '/lang' );

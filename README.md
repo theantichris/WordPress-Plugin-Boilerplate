@@ -20,15 +20,21 @@ Create new custom post types in the main plugin class constructor.
 
 Ex.: $new_post_type = new Custom_Post_Type( $plural_post_type_name, $capabilities, $support, $menu_icon );
 
-### Taxonomies
+## Taxonomies
 
-Taxonomies can be added to custom post type using the add_taxonomy() method. The $args parameter is optional and will use the WordPress default if not specified.
+Taxonomies can be added to post types by creating a Custom_Taxonomy object. The $post_types parameter is options and will use "post" if not specified, it will accept a string or array of strings.
 
-Ex.: $new_post_type->add_taxonomy( $taxonomy_name, $args );
+Ex.: $new_taxonomy = new Custom_Taxonomy( $plural_taxonomy_name, $post_types );
+
+### Terms
+
+You can add terms to a Custom_Taxonomy object by using the add_terms() method. It accepts a single parameter that can either be a string or array of strings.
+
+Ex.: $new_taxonomy->add_terms( $terms );
 
 ## Helper Functions
 
-I include some helper functions within the main class of the framework. They are public, static functions so can be used anywhere.
+Some helper functions are included in the main plugin class. They are public, static functions so can be used anywhere.
 
 ### print_to_log()
 

@@ -79,4 +79,48 @@ class Custom_Taxonomy {
 			register_taxonomy( $this->taxonomy_slug, $this->post_types, $this->taxonomy_args );
 		}
 	}
+
+	/**
+	 * Validates a term or list of terms to add to the taxonomy then calls insert_term() to add it to the database.
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string|array $terms Terms to add to the taxonomy.
+	 *
+	 * @return void
+	 */
+	public function add_terms( $terms ) {
+		if ( is_array( $terms ) ) {
+			if ( !empty( $terms ) ) {
+				foreach ( $terms as $term ) {
+					if ( '' != trim( $term ) ) {
+						$this->insert_term( trim( $term ) );
+					}
+				}
+			}
+		} else {
+			if ( '' != trim( $terms ) ) {
+				$this->insert_term( trim( $terms ) );
+			}
+		}
+	}
+
+	/**
+	 * Adds a term to the WordPress database after being validated by add_terms().
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string $term Validated term to add to the taxonomy.
+	 *
+	 * @return void
+	 */
+	private function insert_term( $term ) {
+		// Bring $taxonomy_slug into scope for anonymous function.
+		$taxonomy_slug = $this->taxonomy_slug;
+
+		add_action( 'init', function () use ( $term, $taxonomy_slug ) {
+			$args = array( 'slug' => str_replace( ' ', '-', strtolower( $term ) ) );
+			wp_insert_term( $term, $taxonomy_slug, $args );
+		} );
+	}
 } 

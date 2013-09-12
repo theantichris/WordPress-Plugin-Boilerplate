@@ -9,6 +9,10 @@
  * @link      http://www.theantichris.com
  */
 
+/*
+ * TODO: Replace "wordpress-plugin-framework" with "plugin-name".
+ */
+
 class Menu_Page extends Page {
 	/**
 	 * Registers the page with WordPress.
@@ -30,7 +34,7 @@ class Menu_Page extends Page {
 	 */
 	public function display_page() {
 		if ( !current_user_can( $this->capability ) ) {
-			wp_die( __( 'You do not have sufficient permissions to access this page.', 'eventbookingwp' ) );
+			wp_die( __( 'You do not have sufficient permissions to access this page.', 'wordpress-plugin-framework' ) );
 		}
 	}
 }

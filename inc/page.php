@@ -64,4 +64,13 @@ abstract class Page {
 	 * @return void
 	 */
 	abstract public function register_page();
+
+	/**
+	 * Displays the HTML output of the page.
+	 *
+	 * @since 4.0.0
+	 *
+	 * @return void
+	 */
+	abstract public function display_page();
 }

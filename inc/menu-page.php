@@ -44,4 +44,15 @@ class Menu_Page extends Page {
 			$this->position = $position;
 		}
 	}
+
+	/**
+	 * Registers the page with WordPress.
+	 *
+	 * @since 4.0.0
+	 *
+	 * @return void
+	 */
+	public function register_page() {
+
+	}
 }

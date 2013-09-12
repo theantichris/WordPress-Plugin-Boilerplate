@@ -39,4 +39,13 @@ abstract class Page {
 			$this->capability = $capability;
 		}
 	}
+
+	/**
+	 * Registers the page with WordPress.
+	 *
+	 * @since 4.0.0
+	 *
+	 * @return void
+	 */
+	abstract public function register_page();
 }

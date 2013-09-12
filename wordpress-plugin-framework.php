@@ -65,6 +65,7 @@ class WordPress_Plugin_Framework {
 		include_once 'inc/page.php';
 		include_once 'inc/menu-page.php';
 		include_once 'inc/taxonomy.php';
+		include_once 'inc/view.php';
 
 		/* Set properties. */
 		$this->plugin_path = plugin_dir_path( __FILE__ );

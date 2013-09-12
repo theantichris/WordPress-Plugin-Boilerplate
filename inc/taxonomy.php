@@ -11,6 +11,7 @@
 
 /*
  * TODO: Replace "WordPress_Plugin_Framework" with "Plugin_Name".
+ * TODO: Replace "wordpress-plugin-framework" with "plugin-name".
  */
 
 class Taxonomy {
@@ -47,17 +48,17 @@ class Taxonomy {
 		$singular = WordPress_Plugin_Framework::make_singular( $taxonomy_name );
 
 		$this->taxonomy_labels = array(
-			'name'              => _x( $taxonomy_name, 'taxonomy general name' ),
-			'singular_name'     => _x( $singular, 'taxonomy singular name' ),
-			'search_items'      => __( 'Search ' . $taxonomy_name ),
-			'all_items'         => __( 'All ' . $taxonomy_name ),
-			'parent_item'       => __( 'Parent ' . $singular ),
-			'parent_item_colon' => __( 'Parent ' . $singular . ':' ),
-			'edit_item'         => __( 'Edit ' . $singular ),
-			'update_item'       => __( 'Update ' . $singular ),
-			'add_new_item'      => __( 'Add New ' . $singular ),
-			'new_item_name'     => __( 'New ' . $singular . ' Name' ),
-			'menu_name'         => __( $singular ),
+			'name'              => __( $taxonomy_name, 'wordpress-plugin-framework' ),
+			'singular_name'     => __( $singular, 'wordpress-plugin-framework' ),
+			'search_items'      => __( 'Search ' . $taxonomy_name, 'wordpress-plugin-framework' ),
+			'all_items'         => __( 'All ' . $taxonomy_name, 'wordpress-plugin-framework' ),
+			'parent_item'       => __( 'Parent ' . $singular, 'wordpress-plugin-framework' ),
+			'parent_item_colon' => __( 'Parent ' . $singular . ':', 'wordpress-plugin-framework' ),
+			'edit_item'         => __( 'Edit ' . $singular, 'wordpress-plugin-framework' ),
+			'update_item'       => __( 'Update ' . $singular, 'wordpress-plugin-framework' ),
+			'add_new_item'      => __( 'Add New ' . $singular, 'wordpress-plugin-framework' ),
+			'new_item_name'     => __( 'New ' . $singular . ' Name', 'wordpress-plugin-framework' ),
+			'menu_name'         => __( $singular, 'wordpress-plugin-framework' ),
 		);
 
 		$this->taxonomy_args = array(
@@ -120,7 +121,7 @@ class Taxonomy {
 
 		add_action( 'init', function () use ( $term, $taxonomy_slug ) {
 			$args = array( 'slug' => WordPress_Plugin_Framework::make_slug( $term ) );
-			wp_insert_term( $term, $taxonomy_slug, $args );
+			wp_insert_term( __( $term,'wordpress-plugin-framework'), $taxonomy_slug, $args );
 		} );
 	}
 } 

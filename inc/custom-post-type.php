@@ -11,6 +11,7 @@
 
 /*
  * TODO: Replace "WordPress_Plugin_Framework" with "Plugin_Name".
+ * TODO: Replace "wordpress-plugin-framework" with "plugin-name".
  */
 
 class Custom_Post_Type {
@@ -64,19 +65,19 @@ class Custom_Post_Type {
 		$singular = WordPress_Plugin_Framework::make_singular( $this->post_type_name );
 
 		$this->post_type_labels = array(
-			'name'               => $this->post_type_name,
-			'singular_name'      => $singular,
-			'add_new'            => 'Add New',
-			'add_new_item'       => 'Add New ' . $singular,
-			'edit_item'          => 'Edit ' . $singular,
-			'new_item'           => 'New ' . $singular,
-			'all_items'          => 'All ' . $this->post_type_name,
-			'view_item'          => 'View ' . $singular,
-			'search_items'       => 'Search ' . $this->post_type_name,
-			'not_found'          => 'No ' . strtolower( $this->post_type_name ) . ' found.',
-			'not_found_in_trash' => 'No ' . strtolower( $this->post_type_name ) . ' found in Trash.',
+			'name'               => __( $this->post_type_name, 'wordpress-plugin-framwork' ),
+			'singular_name'      => __( $singular, 'wordpress-plugin-framwork' ),
+			'add_new'            => __( 'Add New', 'wordpress-plugin-framwork' ),
+			'add_new_item'       => __( 'Add New ' . $singular, 'wordpress-plugin-framwork' ),
+			'edit_item'          => __( 'Edit ' . $singular, 'wordpress-plugin-framwork' ),
+			'new_item'           => __( 'New ' . $singular, 'wordpress-plugin-framwork' ),
+			'all_items'          => __( 'All ' . $this->post_type_name, 'wordpress-plugin-framwork' ),
+			'view_item'          => __( 'View ' . $singular, 'wordpress-plugin-framwork' ),
+			'search_items'       => __( 'Search ' . $this->post_type_name, 'wordpress-plugin-framwork' ),
+			'not_found'          => __( 'No ' . strtolower( $this->post_type_name ) . ' found.', 'wordpress-plugin-framwork' ),
+			'not_found_in_trash' => __( 'No ' . strtolower( $this->post_type_name ) . ' found in Trash.', 'wordpress-plugin-framwork' ),
 			'parent_item_colon'  => '',
-			'menu_name'          => $this->post_type_name
+			'menu_name'          => __( $this->post_type_name, 'wordpress-plugin-framwork' )
 		);
 
 		$this->post_type_args = array(

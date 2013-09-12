@@ -49,7 +49,7 @@ class Custom_Post_Type {
 	 */
 	function __construct( $post_type_name, $capabilities = null, $supports = null, $menu_icon = null ) {
 		$this->post_type_name = $post_type_name;
-		$this->post_type_slug = str_replace( ' ', '-', strtolower( $post_type_name ) );
+		$this->post_type_slug = WordPress_Plugin_Framework::make_slug( $post_type_name );
 
 		if ( !empty( $capabilities ) ) {
 			$this->capabilities = $capabilities;

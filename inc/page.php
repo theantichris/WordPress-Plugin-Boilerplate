@@ -44,6 +44,16 @@ abstract class Page {
 		if ( !empty( $capability ) ) {
 			$this->capability = $capability;
 		}
+
+		if ( !empty( $icon_url ) ) {
+			$this->icon_url = $icon_url;
+		}
+
+		if ( !empty( $position ) ) {
+			$this->position = $position;
+		}
+
+		add_action( 'admin_menu', array( $this, 'register_page' ) );
 	}
 
 	/**

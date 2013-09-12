@@ -37,7 +37,7 @@ class Custom_Taxonomy {
 	 */
 	public function __construct( $taxonomy_name, $post_types = null ) {
 		$this->taxonomy_name = $taxonomy_name;
-		$this->taxonomy_slug = str_replace( ' ', '-', strtolower( $taxonomy_name ) );
+		$this->taxonomy_slug = WordPress_Plugin_Framework::make_slug( $taxonomy_name );
 
 		// If $post_types is specified, set it. Otherwise it will default to 'post'.
 		if ( !empty( $post_types ) ) {
@@ -119,7 +119,7 @@ class Custom_Taxonomy {
 		$taxonomy_slug = $this->taxonomy_slug;
 
 		add_action( 'init', function () use ( $term, $taxonomy_slug ) {
-			$args = array( 'slug' => str_replace( ' ', '-', strtolower( $term ) ) );
+			$args = array( 'slug' => WordPress_Plugin_Framework::make_slug( $term ) );
 			wp_insert_term( $term, $taxonomy_slug, $args );
 		} );
 	}

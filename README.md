@@ -47,3 +47,9 @@ Ex.: WordPress_Plugin_Framework::print_to_log( $message_to_send ).
 Takes a plural string and makes it singular.
 
 Ex.: $singular_string = WordPress_Plugin_Framework::make_singular( $plural_string );
+
+### make_slug()
+
+Takes a string and makes a WordPress slug by replacing spaces with hyphens and making all letters lower case.
+
+Ex.: $slug = WordPress_Plugin_Framework::make_slug( $string );

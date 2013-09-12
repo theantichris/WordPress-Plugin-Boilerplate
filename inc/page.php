@@ -15,15 +15,15 @@
 
 abstract class Page {
 	/** @var string User readable title for the page and menu item. */
-	private $page_title;
+	protected $page_title;
 	/** @var string Unique ID for the page. */
-	private $page_slug;
+	protected $page_slug;
 	/** @var string The capability required for the menu item to be displayed to the user. */
-	private $capability = 'manage_options';
+	protected $capability = 'manage_options';
 	/** @var string|null The URL to the icon to be used for the menu item. */
-	private $icon_url = null;
+	protected $icon_url = null;
 	/** @var integer|null The position in the menu this page should appear. */
-	private $position = null;
+	protected $position = null;
 
 	/**
 	 * Class constructor.

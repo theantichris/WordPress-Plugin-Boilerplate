@@ -29,6 +29,8 @@ class Menu_Page extends Page {
 	 * @return void
 	 */
 	public function display_page() {
-
+		if ( !current_user_can( $this->capability ) ) {
+			wp_die( __( 'You do not have sufficient permissions to access this page.', 'eventbookingwp' ) );
+		}
 	}
 }

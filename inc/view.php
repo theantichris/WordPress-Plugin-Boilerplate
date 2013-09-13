@@ -16,12 +16,12 @@ class View {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param string $file_path The path to the template file in the view folder.
+	 * @param string $view_path The path to the template file in the view folder.
 	 * @param array  $view_data Any variables that the templates need access to in an associative array.
 	 *
 	 * @return string
 	 */
-	public static function render( $file_path, $view_data = null ) {
+	public static function render( $view_path, $view_data = null ) {
 		// Check if any data was sent.
 		if ( $view_data ) {
 			extract( $view_data );
@@ -29,7 +29,7 @@ class View {
 
 		ob_start(); // Start the output buffer.
 
-		include_once( $file_path ); // Include the template.
+		include_once( $view_path ); // Include the template.
 
 		$template = ob_get_contents(); // Add the template contents to the output buffer.
 

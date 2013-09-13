@@ -35,10 +35,10 @@ abstract class Page {
 	 * @since 4.0.0
 	 *
 	 * @param string      $page_title User readable title for the page and menu item.
-	 * @param             $view_path  Path to the view file the page will use to display content.
+	 * @param string      $view_path  Path to the view file the page will use to display content.
 	 * @param string      $capability The capability required for the menu item to be displayed to the user.     *
 	 * @param string|null $icon_url   The URL to the icon to be used for the menu item.
-	 * @param string|null $position   The position in the menu this page should appear.	 *
+	 * @param string|null $position   The position in the menu this page should appear.     *
 	 * @param array       $view_data  Any variables that the templates need access to in an associative array.
 	 *
 	 * @return Page
@@ -46,6 +46,8 @@ abstract class Page {
 	public function __construct( $page_title, $view_path, $capability = null, $icon_url = null, $position = null, $view_data = array() ) {
 		$this->page_title = $page_title;
 		$this->page_slug  = WordPress_Plugin_Framework::make_slug( $page_title );
+
+		$this->view_path = $view_path;
 
 		if ( !empty( $capability ) ) {
 			$this->capability = $capability;
@@ -58,6 +60,12 @@ abstract class Page {
 		if ( !empty( $position ) ) {
 			$this->position = $position;
 		}
+
+		if ( !empty( $view_data ) ) {
+			$this->view_data = $view_data;
+		}
+
+		$this->view_data[ 'page_title' ] = $this->page_title;
 
 		add_action( 'admin_menu', array( $this, 'register_page' ) );
 	}

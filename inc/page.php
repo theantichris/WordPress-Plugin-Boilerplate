@@ -11,6 +11,7 @@
 
 /*
  * TODO: Replace "WordPress_Plugin_Framework" with "Plugin_Name".
+ * TODO: Replace "wordpress-plugin-framework" with "plugin-name".
  */
 
 abstract class Page {
@@ -28,22 +29,25 @@ abstract class Page {
 	protected $view_path;
 	/** @var array Any variables that the templates need access to in an associative array. */
 	protected $view_data = array();
+	/** @var string The WordPress slug for the parent page. */
+	protected $parent_slug;
 
 	/**
 	 * Class constructor.
 	 *
 	 * @since 4.0.0
 	 *
-	 * @param string      $page_title User readable title for the page and menu item.
-	 * @param string      $view_path  Path to the view file the page will use to display content.
-	 * @param string      $capability The capability required for the menu item to be displayed to the user.     *
-	 * @param string|null $icon_url   The URL to the icon to be used for the menu item.
-	 * @param string|null $position   The position in the menu this page should appear.     *
-	 * @param array       $view_data  Any variables that the templates need access to in an associative array.
+	 * @param string      $page_title  User readable title for the page and menu item.
+	 * @param string      $view_path   Path to the view file the page will use to display content.
+	 * @param string      $capability  The capability required for the menu item to be displayed to the user.
+	 * @param string|null $icon_url    The URL to the icon to be used for the menu item.
+	 * @param string|null $position    The position in the menu this page should appear.
+	 * @param array       $view_data   Any variables that the templates need access to in an associative array.
+	 * @param array|null  $parent_slug The WordPress slug for the parent page.
 	 *
 	 * @return Page
 	 */
-	public function __construct( $page_title, $view_path, $capability = null, $icon_url = null, $position = null, $view_data = array() ) {
+	public function __construct( $page_title, $view_path, $capability = null, $icon_url = null, $position = null, $view_data = array(), $parent_slug = null ) {
 		$this->page_title = $page_title;
 		$this->page_slug  = WordPress_Plugin_Framework::make_slug( $page_title );
 
@@ -67,7 +71,20 @@ abstract class Page {
 
 		$this->view_data[ 'page_title' ] = $this->page_title;
 
+		$this->parent_slug = $parent_slug;
+
 		add_action( 'admin_menu', array( $this, 'add_page' ) );
+	}
+
+	/**
+	 * Returns the $page_slug property.
+	 *
+	 * @since 4.0.0
+	 *
+	 * @return string
+	 */
+	public function get_page_slug() {
+		return $this->page_slug;
 	}
 
 	/**

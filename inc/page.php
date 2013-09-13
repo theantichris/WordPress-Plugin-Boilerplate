@@ -11,6 +11,7 @@
 
 /*
  * TODO: Replace "WordPress_Plugin_Framework" with "Plugin_Name".
+ * TODO: Replace "wordpress-plugin-framework" with "plugin-name".
  */
 
 abstract class Page {

@@ -66,6 +66,8 @@ class WordPress_Plugin_Framework {
 		include_once 'inc/custom-post-type.php';
 		include_once 'inc/page.php';
 		include_once 'inc/menu-page.php';
+		include_once 'inc/object-page.php';
+		include_once 'inc/utility-page.php';
 		include_once 'inc/taxonomy.php';
 		include_once 'inc/view.php';
 

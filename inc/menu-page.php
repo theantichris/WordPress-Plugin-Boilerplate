@@ -11,13 +11,13 @@
 
 class Menu_Page extends Page {
 	/**
-	 * Registers the page with WordPress.
+	 * Adds the page with WordPress.
 	 *
 	 * @since 4.0.0
 	 *
 	 * @return void
 	 */
-	public function register_page() {
+	public function add_page() {
 		add_menu_page( $this->page_title, $this->page_title, $this->capability, $this->page_slug, array( $this, 'display_page' ), $this->icon_url, $this->position );
 	}
 

@@ -67,20 +67,20 @@ abstract class Page {
 
 		$this->view_data[ 'page_title' ] = $this->page_title;
 
-		add_action( 'admin_menu', array( $this, 'register_page' ) );
+		add_action( 'admin_menu', array( $this, 'add_page' ) );
 	}
 
 	/**
-	 * Registers the page with WordPress.
+	 * Adds the page with WordPress.
 	 *
 	 * @since 4.0.0
 	 *
 	 * @return void
 	 */
-	abstract public function register_page();
+	abstract public function add_page();
 
 	/**
-	 * Removes a page from WordPress.
+	 * Removes the page from WordPress.
 	 *
 	 * @since 4.0.0
 	 *

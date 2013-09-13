@@ -24,6 +24,10 @@ abstract class Page {
 	protected $icon_url = null;
 	/** @var integer|null The position in the menu this page should appear. */
 	protected $position = null;
+	/** @var string Path to the view file the page will use to display content. */
+	protected $view_path;
+	/** @var array Any variables that the templates need access to in an associative array. */
+	protected $view_data = array();
 
 	/**
 	 * Class constructor.
@@ -31,13 +35,15 @@ abstract class Page {
 	 * @since 4.0.0
 	 *
 	 * @param string      $page_title User readable title for the page and menu item.
+	 * @param             $view_path  Path to the view file the page will use to display content.
 	 * @param string      $capability The capability required for the menu item to be displayed to the user.     *
 	 * @param string|null $icon_url   The URL to the icon to be used for the menu item.
-	 * @param string|null $position   The position in the menu this page should appear.
+	 * @param string|null $position   The position in the menu this page should appear.	 *
+	 * @param array       $view_data  Any variables that the templates need access to in an associative array.
 	 *
 	 * @return Page
 	 */
-	public function __construct( $page_title, $capability = null, $icon_url = null, $position = null ) {
+	public function __construct( $page_title, $view_path, $capability = null, $icon_url = null, $position = null, $view_data = array() ) {
 		$this->page_title = $page_title;
 		$this->page_slug  = WordPress_Plugin_Framework::make_slug( $page_title );
 
@@ -72,5 +78,11 @@ abstract class Page {
 	 *
 	 * @return void
 	 */
-	abstract public function display_page();
+	public function display_page() {
+		if ( !current_user_can( $this->capability ) ) {
+			wp_die( __( 'You do not have sufficient permissions to access this page.', 'wordpress-plugin-framework' ) );
+		}
+
+		echo View::render( $this->view_path, $this->view_data );
+	}
 }

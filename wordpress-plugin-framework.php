@@ -67,13 +67,14 @@ class WordPress_Plugin_Framework {
 		include_once 'inc/page.php';
 		include_once 'inc/menu-page.php';
 		include_once 'inc/object-page.php';
+		include_once 'inc/sub-menu-page.php';
 		include_once 'inc/utility-page.php';
 		include_once 'inc/taxonomy.php';
 		include_once 'inc/view.php';
 
 		/* Set properties. */
 		$this->plugin_path = plugin_dir_path( __FILE__ );
-		$this->plugin_url = plugin_dir_url( __FILE__ );
+		$this->plugin_url  = plugin_dir_url( __FILE__ );
 
 		/* Load text domain. */
 		load_plugin_textdomain( 'wordpress-plugin-framework', false, $this->plugin_path . '/lang' );
@@ -85,6 +86,9 @@ class WordPress_Plugin_Framework {
 		/* Register activation and deactivation hooks. */
 		register_activation_hook( __FILE__, array( $this, 'activation' ) );
 		register_deactivation_hook( __FILE__, array( $this, 'deactivation' ) );
+
+		$this->pages[ 'menu-page' ]    = new Menu_Page( 'Menu Page', $this->plugin_path . '/views/test-view.php' );
+		$this->pages[ 'submenu-page' ] = new Sub_Menu_Page( 'Submenu Page', $this->plugin_path . '/views/test-view.php', $capability = null, $icon_url = null, $position = null, $view_data = array(), $parent_slug = $this->pages[ 'menu-page' ]->get_page_slug() );
 	}
 
 	/**
@@ -170,13 +174,13 @@ class WordPress_Plugin_Framework {
 	 */
 	public static function make_singular( $word ) {
 		$rules = array(
-			'ss' => false,
-			'os' => 'o',
+			'ss'  => false,
+			'os'  => 'o',
 			'ies' => 'y',
 			'xes' => 'x',
 			'oes' => 'o',
 			'ves' => 'f',
-			's' => ''
+			's'   => ''
 		);
 
 		// Loop through all the rules and do the replacement.

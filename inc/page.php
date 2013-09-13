@@ -80,6 +80,15 @@ abstract class Page {
 	abstract public function register_page();
 
 	/**
+	 * Removes a page from WordPress.
+	 *
+	 * @since 4.0.0
+	 *
+	 * @return void
+	 */
+	abstract public function remove_page();
+
+	/**
 	 * Displays the HTML output of the page.
 	 *
 	 * @since 4.0.0

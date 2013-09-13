@@ -4,7 +4,7 @@
   Plugin Name: WordPress Plugin Framework
   Plugin URI: https://github.com/theantichris/WordPress-Plugin-Framework
   Description: My own framework for making WordPress plugins the way I do.
-  Version: 3.3.0
+  Version: 4.0.0
   Author: Christopher Lamm
   Author URI: http://www.theantichris.com
   License: GPL V2
@@ -37,6 +37,8 @@ class WordPress_Plugin_Framework {
 	private $custom_post_types = array();
 	/** @var Taxonomy[] Taxonomies objects used by the plugin. */
 	private $taxonomies = array();
+	/** @var Page[] Page objects used by the plugin. */
+	private $pages = array();
 
 	/**
 	 * Creates or returns an instance of this class.

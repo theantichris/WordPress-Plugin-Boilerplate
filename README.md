@@ -34,6 +34,30 @@ You can add terms to a Custom_Taxonomy object by using the add_terms() method. I
 
 Ex.: $new_taxonomy->add_terms( $terms );
 
+## Pages
+
+You can create new dashboard pages by using the Menu_Page, Object_Page, Utility_Page, and Sub_Menu_Page classes.
+
+The only required fields are $page_title and $view_path with the exception of $parent_slug which is only required for Sub_Menu_Page.
+
+All pages use the View object to echo the HTML.
+
+To add a top level menu page use the Menu_Page class.
+
+Ex.: $menu_page = new Menu_Page( $page_title, $view_path, $capability = 'manage_options, $icon_url = null, $position = null, $view_data = array(), $parent_slug = null )
+
+### Removing Pages
+
+You can remove a page using the remove_page( $page_slug ) method.
+
+## View
+
+There is a View class provide to introduce some MVC functionality to the framework and make it simpler to create pages. To create a view place a PHP file into the /views/ directory that displays the HTML.
+
+Assign the path to the file to $view_path. If you need to pass any data to the View assign it to an associative array to the $view_data property.
+
+Ex.: View::render( $view_path, $view_data = null )
+
 ## Helper Functions
 
 Some helper functions are included in the main plugin class. They are public, static functions so can be used anywhere.

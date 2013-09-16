@@ -118,9 +118,11 @@ class Settings {
 			$page    = $this->page;
 			$section = $this->section[ 'id' ];
 
+			// Call hook to register the setting field with WordPress.
 			add_action( 'admin_init', function () use ( $title, $view_path, $view_data, $args, $page, $section ) {
 				$id = WordPress_Plugin_Framework::make_slug( $title );
 
+				// Display the field's output.
 				add_settings_field( $id, $title, function () use ( $title, $view_path, $view_data ) {
 					$view_data[ 'title' ] = $title;
 					View::render( $view_path, $view_data );

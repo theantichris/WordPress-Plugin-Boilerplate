@@ -1,0 +1,1 @@
+<p>Intro text for our settings section.</p>

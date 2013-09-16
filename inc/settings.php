@@ -115,22 +115,6 @@ class Settings {
 	 */
 	public function add_field( $title, $view_path, $view_data = array(), $args = array() ) {
 		if ( ( '' != trim( $title ) ) && ( file_exists( $view_path ) ) ) {
-			/*
-			$field = array(
-				'title'     => $title,
-				'id'        => WordPress_Plugin_Framework::make_slug( $title ),
-				'view_path' => $view_path,
-				'view_data' => $view_data,
-				'args'      => $args
-			);
-
-			$field[ 'view_data' ][ 'title' ] = $title;
-
-			$this->fields[ ] = $field;
-
-			add_action( 'admin_init', array( $this, 'register_field' ) );
-			*/
-
 			$page    = $this->page;
 			$section = $this->section[ 'id' ];
 

@@ -1,1 +1,1 @@
-<p>This is the view for the field.</p>
+<p>This is coming from the view for the settings field.</p>

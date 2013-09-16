@@ -1,1 +1,1 @@
-<p>Intro text for our settings section.</p>
+<p>This is coming from the view for the settings section.</p>

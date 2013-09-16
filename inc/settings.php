@@ -122,9 +122,10 @@ class Settings {
 			add_action( 'admin_init', function () use ( $title, $view_path, $view_data, $args, $page, $section ) {
 				$id = WordPress_Plugin_Framework::make_slug( $title );
 
-				add_settings_field( $id, $title, function () use ( $title, $view_path, $view_data ) {
+				add_settings_field( $id, $title, function () use ( $id, $title, $view_path, $view_data ) {
 					// Display the field's view.
 					$view_data[ 'title' ] = $title;
+					$view_data[ 'id' ] = $id;
 					echo View::render( $view_path, $view_data );
 				}, $page, $section, $args );
 

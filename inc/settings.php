@@ -125,7 +125,7 @@ class Settings {
 				add_settings_field( $id, $title, function () use ( $title, $view_path, $view_data ) {
 					// Display the field's view.
 					$view_data[ 'title' ] = $title;
-					View::render( $view_path, $view_data );
+					echo View::render( $view_path, $view_data );
 				}, $page, $section, $args );
 
 				register_setting( $page, $id );

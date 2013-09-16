@@ -7,6 +7,15 @@
  * @license   GNU General Public License, version 3
  * @license   http://opensource.org/licenses/gpl-license.php GNU Public License
  * @link      http://www.theantichris.com
+ *
+ * @package    WordPress
+ * @subpackage WordPressPluginFramework
+ *
+ * @since 4.0.0
+ */
+
+/*
+ * TODO: Replace "WordPressPluginFramework" with "PluginName".
  */
 
 class Object_Page extends Page {

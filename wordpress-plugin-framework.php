@@ -150,7 +150,7 @@ class WordPress_Plugin_Framework {
 	 * @return void
 	 */
 	private function run_plugin() {
-
+		$this->pages[ 'Test Settings' ] = new Options_Page( 'Test Settings', $this->plugin_path . '/views/view-test-settings-page.php' );
 	}
 
 	/**

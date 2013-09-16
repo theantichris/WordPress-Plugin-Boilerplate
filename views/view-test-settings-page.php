@@ -1,0 +1,1 @@
+<h2><?php echo esc_html( $page_title ); ?></h2>

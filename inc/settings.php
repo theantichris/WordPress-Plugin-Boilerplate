@@ -88,4 +88,15 @@ class Settings {
 	public function register_section() {
 		add_settings_section( $this->section[ 'id' ], $this->section[ 'title' ], array( $this, 'display_section' ), $this->page );
 	}
+
+	/**
+	 * Displays the settings section output.
+	 *
+	 * @since 5.0.0
+	 *
+	 * @return void
+	 */
+	public function display_section() {
+		echo View::render( $this->section[ 'view_path' ], $this->section[ 'view_data' ] );
+	}
 }

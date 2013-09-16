@@ -37,7 +37,7 @@ class Settings {
 	 *
 	 * @param string $page
 	 */
-	function __construct( $page = 'general' ) {
+	public function __construct( $page = 'general' ) {
 		if ( '' != trim( $page ) ) {
 			$this->page = $page;
 		}

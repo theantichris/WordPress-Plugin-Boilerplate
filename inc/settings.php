@@ -106,10 +106,10 @@ class Settings {
 	 *
 	 * @since 5.0.0
 	 *
-	 * @param       $title
-	 * @param       $view_path
-	 * @param array $view_data
-	 * @param array $args
+	 * @param string $title     User readable name for the field.
+	 * @param string $view_path Path to the view for the field
+	 * @param array  $view_data Data to pass to the view.
+	 * @param array  $args      Optional arguments the field needs in WordPress.
 	 *
 	 * @return void
 	 */

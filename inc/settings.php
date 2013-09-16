@@ -71,9 +71,9 @@ class Settings {
 			$this->section[ 'title' ] = $title;
 			$this->section[ 'id' ]    = WordPress_Plugin_Framework::make_slug( $title );
 
-			$this->section[ 'view_path' ]                    = $view_path;
-			$this->section[ 'view_data' ][ 'section_title' ] = $title;
-			$this->section[ 'view_data' ]                    = $view_data;
+			$this->section[ 'view_path' ]            = $view_path;
+			$this->section[ 'view_data' ][ 'title' ] = $title;
+			$this->section[ 'view_data' ]            = $view_data;
 
 			add_action( 'admin_init', array( $this, 'register_section' ) );
 		}

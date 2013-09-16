@@ -151,6 +151,10 @@ class WordPress_Plugin_Framework {
 	private function run_plugin() {
 		$this->pages[ 'menu-page' ]    = new Menu_Page( 'Menu Page', $this->plugin_path . '/views/test-view.php' );
 		$this->pages[ 'submenu-page' ] = new Sub_Menu_Page( 'Submenu Page', $this->plugin_path . '/views/test-view.php', $capability = null, $icon_url = null, $position = null, $view_data = array(), $parent_slug = $this->pages[ 'menu-page' ]->get_page_slug() );
+
+		$this->settings[ 'test-settings' ] = new Settings( 'submenu-page' );
+		$this->settings[ 'test-settings' ]->add_section( 'Test Section', $this->plugin_path . '/views/test-view.php' );
+		$this->settings[ 'test-settings' ]->add_field( 'Test Field', $this->plugin_path . '/views/test-view.php' );
 	}
 
 	/**

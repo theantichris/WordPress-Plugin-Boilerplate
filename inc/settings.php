@@ -100,4 +100,45 @@ class Settings {
 	public function display_section() {
 		echo View::render( $this->section[ 'view_path' ], $this->section[ 'view_data' ] );
 	}
+
+	/**
+	 * Adds a settings field to the object.
+	 *
+	 * @since 5.0.0
+	 *
+	 * @param       $title
+	 * @param       $view_path
+	 * @param array $view_data
+	 * @param array $args
+	 *
+	 * @return void
+	 */
+	public function add_field( $title, $view_path, $view_data = array(), $args = array() ) {
+		if ( ( '' != trim( $title ) ) && ( file_exists( $view_path ) ) ) {
+			/*
+			$field = array(
+				'title'     => $title,
+				'id'        => WordPress_Plugin_Framework::make_slug( $title ),
+				'view_path' => $view_path,
+				'view_data' => $view_data,
+				'args'      => $args
+			);
+
+			$field[ 'view_data' ][ 'title' ] = $title;
+
+			$this->fields[ ] = $field;
+
+			add_action( 'admin_init', array( $this, 'register_field' ) );
+			*/
+
+			$page    = $this->page;
+			$section = $this->section[ 'id' ];
+
+			add_action( 'admin_init', function () use ( $title, $view_path, $view_data, $args, $page, $section ) {
+				add_settings_field( WordPress_Plugin_Framework::make_slug( $title ), $title, function () use ( $view_path, $view_data ) {
+					View::render( $view_path, $view_data );
+				}, $page, $section, $args );
+			} );
+		}
+	}
 }

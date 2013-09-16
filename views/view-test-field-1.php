@@ -1,1 +1,1 @@
-<p>This is coming from the view for the settings field.</p>
+<label><input name="<?php echo esc_attr( $title ); ?>" id="<?php echo esc_attr( $title ); ?>" type="checkbox" value="1" <?php checked( 1, get_option( $title ), false ); ?> />This is a checkbox!</label>

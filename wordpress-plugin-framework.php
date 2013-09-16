@@ -39,6 +39,8 @@ class WordPress_Plugin_Framework {
 	private $taxonomies = array();
 	/** @var Page[] Page objects used by the plugin. */
 	private $pages = array();
+	/** @var Settings[] Settings objects used by the plugin. */
+	private $settings = array();
 
 	/**
 	 * Creates or returns an instance of this class.

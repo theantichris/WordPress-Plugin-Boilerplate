@@ -136,4 +136,18 @@ class Settings {
 			} );
 		}
 	}
+
+	/**
+	 * Cleanly removes a setting from WordPress.
+	 *
+	 * @since 5.0.0
+	 *
+	 * @param string $page
+	 * @param string $id
+	 *
+	 * @return void
+	 */
+	public function remove_field( $page, $id ) {
+		unregister_setting( $page, $id );
+	}
 }

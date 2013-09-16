@@ -4,7 +4,7 @@
   Plugin Name: WordPress Plugin Framework
   Plugin URI: https://github.com/theantichris/WordPress-Plugin-Framework
   Description: My own framework for making WordPress plugins the way I do.
-  Version: 4.0.0
+  Version: 4.1.0
   Author: Christopher Lamm
   Author URI: http://www.theantichris.com
   License: GPL V2
@@ -60,6 +60,8 @@ class WordPress_Plugin_Framework {
 	 * Initializes the plugin by setting localization, hooks, filters, and administrative functions.
 	 *
 	 * @since 1.0.0
+	 *
+	 * @return WordPress_Plugin_Framework
 	 */
 	private function __construct() {
 		/* Includes */
@@ -87,8 +89,9 @@ class WordPress_Plugin_Framework {
 		register_activation_hook( __FILE__, array( $this, 'activation' ) );
 		register_deactivation_hook( __FILE__, array( $this, 'deactivation' ) );
 
-		$this->pages[ 'menu-page' ]    = new Menu_Page( 'Menu Page', $this->plugin_path . '/views/test-view.php' );
-		$this->pages[ 'submenu-page' ] = new Sub_Menu_Page( 'Submenu Page', $this->plugin_path . '/views/test-view.php', $capability = null, $icon_url = null, $position = null, $view_data = array(), $parent_slug = $this->pages[ 'menu-page' ]->get_page_slug() );
+		/* Run plugin. */
+
+		$this->run_plugin();
 	}
 
 	/**
@@ -133,6 +136,18 @@ class WordPress_Plugin_Framework {
 	 */
 	public function register_styles() {
 
+	}
+
+	/**
+	 * Method containing the plugin functionality. Place your code here.
+	 *
+	 * @since 4.1.0
+	 *
+	 * @return void
+	 */
+	private function run_plugin() {
+		$this->pages[ 'menu-page' ]    = new Menu_Page( 'Menu Page', $this->plugin_path . '/views/test-view.php' );
+		$this->pages[ 'submenu-page' ] = new Sub_Menu_Page( 'Submenu Page', $this->plugin_path . '/views/test-view.php', $capability = null, $icon_url = null, $position = null, $view_data = array(), $parent_slug = $this->pages[ 'menu-page' ]->get_page_slug() );
 	}
 
 	/**

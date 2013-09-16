@@ -10,6 +10,8 @@ The base class sets up the text domain for internationalization and localization
 
 A blank uninstall file is included and setup correctly to make sure it is only called from the WordPress dashboard.
 
+All custom plugin functionality should be placed in the run_plugin() method.
+
 When instantiating an object such as Custom_Post_Type or Taxonomy save it to the appropriate array property on the main class.
 
 Ex.: $this->custom_post_types[ 'new_custom_post_type' ] = Custom_Post_Type( $plural_post_type_name, $capabilities, $support, $menu_icon )

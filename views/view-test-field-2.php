@@ -1,0 +1,1 @@
+<label><input id="<?php echo esc_attr( $id ); ?>" name="<?php echo esc_attr( $id ); ?>" type="text" value="<?php get_option( $id ); ?>" /></label>

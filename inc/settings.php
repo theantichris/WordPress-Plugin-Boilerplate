@@ -63,6 +63,8 @@ class Settings {
 	 * @param string $title     User readable title for the settings section.
 	 * @param string $view_path Path to the settings section's view.
 	 * @param array  $view_data Any data that needs to be passed to the view.
+	 *
+	 * @return void
 	 */
 	public function add_section( $title, $view_path, $view_data = array() ) {
 		if ( ( '' != trim( $title ) ) && ( file_exists( $view_path ) ) ) {

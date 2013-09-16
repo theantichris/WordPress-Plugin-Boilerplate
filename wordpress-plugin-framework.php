@@ -71,6 +71,7 @@ class WordPress_Plugin_Framework {
 		include_once 'inc/page.php';
 		include_once 'inc/menu-page.php';
 		include_once 'inc/object-page.php';
+		include_once 'inc/options-page.php';
 		include_once 'inc/sub-menu-page.php';
 		include_once 'inc/utility-page.php';
 		include_once 'inc/settings.php';

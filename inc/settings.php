@@ -75,4 +75,15 @@ class Settings {
 			add_action( 'admin_init', array( $this, 'register_section' ) );
 		}
 	}
+
+	/**
+	 * Registers the settings section with WordPress.
+	 *
+	 * @since 5.0.0
+	 *
+	 * @return void
+	 */
+	public function register_section() {
+		add_settings_section( $this->section[ 'id' ], $this->section[ 'title' ], array( $this, 'display_section' ), $this->page );
+	}
 }

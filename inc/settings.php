@@ -135,9 +135,13 @@ class Settings {
 			$section = $this->section[ 'id' ];
 
 			add_action( 'admin_init', function () use ( $title, $view_path, $view_data, $args, $page, $section ) {
-				add_settings_field( WordPress_Plugin_Framework::make_slug( $title ), $title, function () use ( $view_path, $view_data ) {
+				$id = WordPress_Plugin_Framework::make_slug( $title );
+
+				add_settings_field( $id, $title, function () use ( $view_path, $view_data ) {
 					View::render( $view_path, $view_data );
 				}, $page, $section, $args );
+
+				register_setting( $page, $id );
 			} );
 		}
 	}

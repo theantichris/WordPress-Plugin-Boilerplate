@@ -4,7 +4,7 @@
   Plugin Name: WordPress Plugin Framework
   Plugin URI: https://github.com/theantichris/WordPress-Plugin-Framework
   Description: My own framework for making WordPress plugins the way I do.
-  Version: 4.1.0
+  Version: 5.0.0
   Author: Christopher Lamm
   Author URI: http://www.theantichris.com
   License: GPL V2
@@ -71,6 +71,7 @@ class WordPress_Plugin_Framework {
 		include_once 'inc/object-page.php';
 		include_once 'inc/sub-menu-page.php';
 		include_once 'inc/utility-page.php';
+		include_once 'inc/settings.php';
 		include_once 'inc/taxonomy.php';
 		include_once 'inc/view.php';
 

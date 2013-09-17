@@ -2,8 +2,8 @@
 
 <form method="POST" action="options.php">
 	<?php
-	settings_fields( $page_title );
-	do_settings_sections( $page_title );
+	settings_fields( $slug );
+	do_settings_sections( $slug );
 	submit_button();
 	?>
 </form>

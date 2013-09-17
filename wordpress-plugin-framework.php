@@ -150,7 +150,9 @@ class WordPress_Plugin_Framework {
 	 * @return void
 	 */
 	private function run_plugin() {
-		$this->settings[ 'Test Settings' ] = new Settings( 'general' );
+		$this->pages[ 'Test Settings' ] = new Options_Page( 'Test Settings', $this->plugin_path . '/views/view-test-settings-page.php' );
+
+		$this->settings[ 'Test Settings' ] = new Settings( $this->pages[ 'Test Settings' ]->get_page_slug() );
 		$this->settings[ 'Test Settings' ]->add_section( 'Test Section', $this->plugin_path . '/views/view-test-settings-section.php' );
 		$this->settings[ 'Test Settings']->add_field( 'Field 1', $this->plugin_path . '/views/view-test-field-1.php' );
 		$this->settings[ 'Test Settings']->add_field( 'Field 2', $this->plugin_path . '/views/view-test-field-2.php' );

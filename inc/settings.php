@@ -127,7 +127,7 @@ class Settings {
 				add_settings_field( $id, $title, function () use ( $id, $title, $view_path, $view_data ) {
 					// Display the field's view.
 					$view_data[ 'title' ] = $title;
-					$view_data[ 'id' ] = $id;
+					$view_data[ 'id' ]    = $id;
 					echo View::render( $view_path, $view_data );
 				}, $page, $section, $args );
 

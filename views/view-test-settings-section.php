@@ -1,1 +1,0 @@
-<p>This is coming from the view for the settings section.</p>

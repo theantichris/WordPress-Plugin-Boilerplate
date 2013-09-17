@@ -1,1 +1,0 @@
-<label><input name="<?php echo esc_attr( $id ); ?>" id="<?php echo esc_attr( $id ); ?>" type="checkbox" value="1" <?php checked( 1, get_option( $id ), false ); ?> /> This is a checkbox!</label>

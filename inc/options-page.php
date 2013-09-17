@@ -20,7 +20,7 @@
 
 class Options_Page extends Page {
 	/**
-	 * Add the page with WordPress.
+	 * Add the page to WordPress.
 	 *
 	 * @since 4.0.0
 	 *

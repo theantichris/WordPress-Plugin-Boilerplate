@@ -95,7 +95,7 @@ abstract class Page {
 	}
 
 	/**
-	 * Adds the page with WordPress.
+	 * Adds the page to WordPress.
 	 *
 	 * @since 4.0.0
 	 *

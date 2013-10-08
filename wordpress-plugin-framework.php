@@ -98,7 +98,6 @@ class WordPress_Plugin_Framework {
 		register_deactivation_hook( __FILE__, array( $this, 'deactivation' ) );
 
 		/* Run plugin. */
-
 		$this->run_plugin();
 	}
 

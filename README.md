@@ -54,11 +54,15 @@ You can remove a page using the remove_page( $page_slug ) method.
 
 ## View
 
-There is a View class provide to introduce some MVC functionality to the framework and make it simpler to create pages. To create a view place a PHP file into the /views/ directory that displays the HTML.
+There is a View class provide to introduce some MVC functionality to the framework and make it simpler to create pages and other output.
 
-Assign the path to the file to $view_path. If you need to pass any data to the View assign it to an associative array to the $view_data property.
+To create a view place a PHP file that displays the HTML into the /views/ directory.
 
-Ex.: View::render( $view_path, $view_data = null )
+Assign the file name to $view_file. If you need to pass any data to the View assign it to an associative array to the $view_data property.
+
+View::render must be echoed.
+
+Ex.: echo View::render( $view_file, $view_data = null )
 
 ## Settings
 You can create options for your plugin using the Settings class.

@@ -29,15 +29,4 @@ class Utility_Page extends Page {
 	public function add_page() {
 		add_utility_page( $this->page_title, $this->page_title, $this->capability, $this->page_slug, array( $this, 'display_page' ), $this->icon_url );
 	}
-
-	/**
-	 * Removes a page from WordPress.
-	 *
-	 * @since 4.0.0
-	 *
-	 * @return void
-	 */
-	public function remove_page() {
-		remove_menu_page( $this->page_slug );
-	}
 }

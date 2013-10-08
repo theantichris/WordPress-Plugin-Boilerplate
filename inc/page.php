@@ -75,7 +75,7 @@ abstract class Page {
 			$this->view_data = $view_data;
 		}
 
-		$this->view_data[ 'page_title' ] = $this->page_title;
+		$this->view_data[ 'title' ] = $this->page_title;
 		$this->view_data[ 'slug' ] = $this->page_slug;
 
 		$this->parent_slug = $parent_slug;
@@ -104,13 +104,15 @@ abstract class Page {
 	abstract public function add_page();
 
 	/**
-	 * Removes the page from WordPress.
+	 * Removes a page from WordPress.
 	 *
 	 * @since 4.0.0
 	 *
 	 * @return void
 	 */
-	abstract public function remove_page();
+	public function remove_page() {
+		remove_menu_page( $this->page_slug );
+	}
 
 	/**
 	 * Displays the HTML output of the page.

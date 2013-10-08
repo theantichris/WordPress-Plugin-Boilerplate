@@ -2,6 +2,7 @@
 * Added hooks to enqueue scripts and styles in the admin as well as the front end
 * $plugin_url and $plugin_path are now static properties, each one now has a getter
 * The path to the view folder is now hardcoded, references to the view should only be the file name now
+* Moved remove_page() from subclasses to Page class. Sub_Menu_Page overrides it.
 
 ## Version 5.0.0
 * Settings class

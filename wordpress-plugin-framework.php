@@ -83,7 +83,7 @@ class WordPress_Plugin_Framework {
 		self::$plugin_url  = plugin_dir_url( __FILE__ );
 
 		/* Load text domain. */
-		load_plugin_textdomain( 'wordpress-plugin-framework', false, $this->plugin_path . '/lang' );
+		load_plugin_textdomain( 'wordpress-plugin-framework', false, self::$plugin_path . '/lang' );
 
 		/* Load scripts and styles in the Dashboard. */
 		add_action( 'admin_enqueue_scripts', array( $this, 'register_scripts' ) );

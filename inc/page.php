@@ -75,7 +75,7 @@ abstract class Page {
 			$this->view_data = $view_data;
 		}
 
-		$this->view_data[ 'page_title' ] = $this->page_title;
+		$this->view_data[ 'title' ] = $this->page_title;
 		$this->view_data[ 'slug' ] = $this->page_slug;
 
 		$this->parent_slug = $parent_slug;

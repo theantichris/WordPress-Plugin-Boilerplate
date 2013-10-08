@@ -4,7 +4,7 @@
   Plugin Name: WordPress Plugin Framework
   Plugin URI: https://github.com/theantichris/WordPress-Plugin-Framework
   Description: My own framework for making WordPress plugins the way I do.
-  Version: 4.1.0
+  Version: 5.0.0
   Author: Christopher Lamm
   Author URI: http://www.theantichris.com
   License: GPL V2
@@ -39,6 +39,8 @@ class WordPress_Plugin_Framework {
 	private $taxonomies = array();
 	/** @var Page[] Page objects used by the plugin. */
 	private $pages = array();
+	/** @var Settings[] Settings objects used by the plugin. */
+	private $settings = array();
 
 	/**
 	 * Creates or returns an instance of this class.
@@ -69,8 +71,10 @@ class WordPress_Plugin_Framework {
 		include_once 'inc/page.php';
 		include_once 'inc/menu-page.php';
 		include_once 'inc/object-page.php';
+		include_once 'inc/options-page.php';
 		include_once 'inc/sub-menu-page.php';
 		include_once 'inc/utility-page.php';
+		include_once 'inc/settings.php';
 		include_once 'inc/taxonomy.php';
 		include_once 'inc/view.php';
 
@@ -146,8 +150,7 @@ class WordPress_Plugin_Framework {
 	 * @return void
 	 */
 	private function run_plugin() {
-		$this->pages[ 'menu-page' ]    = new Menu_Page( 'Menu Page', $this->plugin_path . '/views/test-view.php' );
-		$this->pages[ 'submenu-page' ] = new Sub_Menu_Page( 'Submenu Page', $this->plugin_path . '/views/test-view.php', $capability = null, $icon_url = null, $position = null, $view_data = array(), $parent_slug = $this->pages[ 'menu-page' ]->get_page_slug() );
+
 	}
 
 	/**

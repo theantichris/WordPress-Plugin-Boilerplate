@@ -1,6 +1,6 @@
 <?php
 /**
- * A class for creating sub menu WordPress pages.
+ * A class for creating an options sub menu page in WordPress.
  *
  * @author    Christopher Lamm chris@theantichris.com
  * @copyright 2013 Christopher Lamm
@@ -11,23 +11,23 @@
  * @package    WordPress
  * @subpackage WordPressPluginFramework
  *
- * @since 4.0.0
+ * @since 5.0.0
  */
 
 /*
  * TODO: Replace "WordPressPluginFramework" with "PluginName".
  */
 
-class Sub_Menu_Page extends Page {
+class Options_Page extends Page {
 	/**
-	 * Adds the page to WordPress.
+	 * Add the page to WordPress.
 	 *
 	 * @since 4.0.0
 	 *
 	 * @return void
 	 */
 	public function add_page() {
-		add_submenu_page( $this->parent_slug, $this->page_title, $this->page_title, $this->capability, $this->page_slug, array( $this, 'display_page' ) );
+		add_options_page( $this->page_title, $this->page_title, $this->capability, $this->page_slug, array( $this, 'display_page' ) );
 	}
 
 	/**
@@ -38,6 +38,6 @@ class Sub_Menu_Page extends Page {
 	 * @return void
 	 */
 	public function remove_page() {
-		remove_submenu_page( $this->parent_slug, $this->page_slug );
+		remove_menu_page( $this->page_slug );
 	}
 }

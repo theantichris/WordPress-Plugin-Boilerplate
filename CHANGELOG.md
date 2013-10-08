@@ -7,6 +7,12 @@
 ## Version 5.0.0
 * Settings class
 
+## Version 4.0.0
+* Pages
+
+## Version 3.0.0
+* Taxonomies
+
 ## Version 2.0.0
 * Added creation of basic custom post type
 * Added helper method to make strings singular

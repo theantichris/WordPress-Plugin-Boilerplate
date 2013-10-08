@@ -30,9 +30,9 @@ class WordPress_Plugin_Framework {
 	/** @var null|WordPress_Plugin_Framework Refers to a single instance of this class. */
 	private static $instance = null;
 	/** @var  string The path to the plugin file. */
-	private $plugin_path;
+	private static $plugin_path;
 	/** @var  string The URL to the plugin file. */
-	private $plugin_url;
+	private static $plugin_url;
 	/** @var Custom_Post_Type[] Custom post type objects used by the plugin. */
 	private $custom_post_types = array();
 	/** @var Taxonomy[] Taxonomies objects used by the plugin. */
@@ -79,8 +79,8 @@ class WordPress_Plugin_Framework {
 		include_once 'inc/view.php';
 
 		/* Set properties. */
-		$this->plugin_path = plugin_dir_path( __FILE__ );
-		$this->plugin_url  = plugin_dir_url( __FILE__ );
+		self::$plugin_path = plugin_dir_path( __FILE__ );
+		self::$plugin_url  = plugin_dir_url( __FILE__ );
 
 		/* Load text domain. */
 		load_plugin_textdomain( 'wordpress-plugin-framework', false, $this->plugin_path . '/lang' );
@@ -100,6 +100,28 @@ class WordPress_Plugin_Framework {
 		/* Run plugin. */
 
 		$this->run_plugin();
+	}
+
+	/**
+	 * Returns $plugin_url.
+	 *
+	 * @since 5.0.1
+	 *
+	 * @return string
+	 */
+	public static function get_plugin_url() {
+		return self::$plugin_url;
+	}
+
+	/**
+	 * Returns $plugin_path.
+	 *
+	 * @since 5.0.1
+	 *
+	 * @return string
+	 */
+	public static function get_plugin_path() {
+		return self::$plugin_path;
 	}
 
 	/**

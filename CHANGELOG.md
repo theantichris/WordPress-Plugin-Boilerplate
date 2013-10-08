@@ -1,5 +1,6 @@
 ## Version 5.0.1
 * Added hooks to enqueue scripts and styles in the admin as well as the front end
+* $plugin_url and $plugin_path are now static properties, each one now has a getter
 
 ## Version 5.0.0
 * Settings class

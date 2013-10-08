@@ -4,7 +4,7 @@
   Plugin Name: WordPress Plugin Framework
   Plugin URI: https://github.com/theantichris/WordPress-Plugin-Framework
   Description: My own framework for making WordPress plugins the way I do.
-  Version: 5.0.0
+  Version: 5.0.1
   Author: Christopher Lamm
   Author URI: http://www.theantichris.com
   License: GPL V2
@@ -85,7 +85,11 @@ class WordPress_Plugin_Framework {
 		/* Load text domain. */
 		load_plugin_textdomain( 'wordpress-plugin-framework', false, $this->plugin_path . '/lang' );
 
-		/* Load scripts and styles */
+		/* Load scripts and styles in the Dashboard. */
+		add_action( 'admin_enqueue_scripts', array( $this, 'register_scripts' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'register_styles' ) );
+
+		/* Load scripts and styles on the front end. */
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_scripts' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_styles' ) );
 

@@ -38,7 +38,7 @@ Ex.: $new_taxonomy->add_terms( $terms );
 
 ## Pages
 
-You can create new dashboard pages by using the Menu_Page, Object_Page, Utility_Page, and Sub_Menu_Page classes.
+You can create new dashboard pages by using the Menu_Page, Object_Page, Utility_Page, Sub_Menu_Page, and Options_Page classes.
 
 The only required fields are $page_title and $view_path with the exception of $parent_slug which is only required for Sub_Menu_Page.
 
@@ -59,6 +59,14 @@ There is a View class provide to introduce some MVC functionality to the framewo
 Assign the path to the file to $view_path. If you need to pass any data to the View assign it to an associative array to the $view_data property.
 
 Ex.: View::render( $view_path, $view_data = null )
+
+## Settings
+You can create options for your plugin using the Settings class.
+
+Ex.:
+$setting = new Settings( $page_slug ); // Creates the settings object with the slug of the page. This could be a default page or one you create.
+$setting->add_section( 'My Section', $view ); // Creates the settings section your options will be grouped under. The view will contain the header for the section.
+$setting->add_field( 'My Field', $view ); // Creates the field and adds it to the section. The view needs to contain the input field for the option.
 
 ## Helper Functions
 

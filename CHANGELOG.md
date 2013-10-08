@@ -1,3 +1,6 @@
+## Version 5.0.0
+* Settings class
+
 ## Version 2.0.0
 * Added creation of basic custom post type
 * Added helper method to make strings singular

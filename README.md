@@ -1,16 +1,17 @@
 # WordPress Plugin Framework
 
-My own framework for making the WordPress plugins the way I do.
+This is a framework I wrote for making WordPress plugins easier and to help ensure the use of best practices.
+The main class uses the Singleton pattern to ensure that only one instance of the plugin is ever created.
 
-The main plugin class is a Singleton pattern to ensure that only one instance created.
-
-Includes blank methods for activation, deactivation, and registering scripts and styles.
+I have included blank methods for activation, deactivation, and registering scripts and styles.
 
 The base class sets up the text domain for internationalization and localization. Just drop your i18n and l10n files into the lang directory.
 
 A blank uninstall file is included and setup correctly to make sure it is only called from the WordPress dashboard.
 
-All custom plugin functionality should be placed in the run_plugin() method.
+All custom plugin functionality should be started in the run_plugin() method.
+
+## Instantiating Objects
 
 When instantiating an object such as Custom_Post_Type or Taxonomy save it to the appropriate array property on the main class.
 
@@ -60,7 +61,7 @@ To create a view place a PHP file that displays the HTML into the /views/ direct
 
 Assign the file name to $view_file. If you need to pass any data to the View assign it to an associative array to the $view_data property.
 
-View::render must be echoed.
+View::render() must be echoed.
 
 Ex.: echo View::render( $view_file, $view_data = null )
 

@@ -16,7 +16,9 @@ All custom plugin functionality should be started in the run_plugin() method.
 
 When instantiating an object such as Custom_Post_Type or Taxonomy save it to the proper array property on the main class.
 
+```
 $this->custom_post_types[ 'new_custom_post_type' ] = Custom_Post_Type( $plural_post_type_name, $capabilities, $support, $menu_icon )
+```
 
 ## Custom Post Types
 
@@ -24,19 +26,25 @@ You can create a custom post type through the CustomPostType object. The class a
 
 Create new custom post types in the main plugin class constructor.
 
+```
 $new_post_type = new Custom_Post_Type( $plural_post_type_name, $capabilities, $support, $menu_icon );
+```
 
 ## Taxonomies
 
 Taxonomies can be added to post types by creating a Custom_Taxonomy object. The $post_types parameter is options and will use “post” if not specified, it will accept a string or array of strings.
 
+```
 $new_taxonomy = new Custom_Taxonomy( $plural_taxonomy_name, $post_types );
+```
 
 ## Terms
 
 You can add terms to a Custom_Taxonomy object by using the add_terms() method. It accepts a single parameter that can either be a string or array of strings.
 
+```
 $new_taxonomy->add_terms( $terms );
+```
 
 ## Pages
 
@@ -48,7 +56,9 @@ All pages use the View object to echo the HTML.
 
 To add a top-level menu page use the Menu_Page class.
 
+```
 $menu_page = new Menu_Page( $page_title, $view_path, $capability = 'manage_options, $icon_url = null, $position = null, $view_data = array(), $parent_slug = null )
+```
 
 ### Removing Pages
 
@@ -64,7 +74,9 @@ Assign the file name to $view_file. If you need to pass any data to the View ass
 
 View::render() must be echoed.
 
+```
 echo View::render( $view_file, $view_data = null )
+```
 
 ## Settings
 
@@ -80,16 +92,22 @@ Some helper functions are included in the main plugin class. They are public, st
 
 Writes a message to debug.log in the wp-content folder if you have the wp-config.php setup to do that. It will accept any variable or string.
 
-WordPress_Plugin_Framework::print_to_log( $message_to_send ).
+```
+WordPress_Plugin_Framework::print_to_log( $message_to_send );
+```
 
 ### make_singular()
 
 Takes a plural string and makes it singular.
 
+```
 $singular_string = WordPress_Plugin_Framework::make_singular( $plural_string );
+```
 
 ### make_slug()
 
 Takes a string and makes a WordPress slug by replacing spaces with hyphens and making all letters lowercase.
 
+```
 $slug = WordPress_Plugin_Framework::make_slug( $string );
+```

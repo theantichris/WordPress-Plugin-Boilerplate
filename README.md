@@ -1,6 +1,6 @@
 # WordPress Plugin Framework
 
-This is a framework I wrote for making WordPress plugins easier and to help make sure the use of best practices.
+This is an OOP framework for developing WordPress plugins.
 
 The main class uses the Singleton pattern to make sure that only one instance of the plugin is ever created.
 

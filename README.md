@@ -17,7 +17,7 @@ All custom plugin functionality should be started in the run_plugin() method.
 When instantiating an object such as Custom_Post_Type or Taxonomy save it to the proper array property on the main class.
 
 ```
-$this->custom_post_types[ 'new_custom_post_type' ] = Custom_Post_Type( $plural_post_type_name, $capabilities, $support, $menu_icon )
+$this->custom_post_types[ 'new_custom_post_type' ] = Custom_Post_Type( $plural_post_type_name, $capabilities, $support, $menu_icon );
 ```
 
 ## Custom Post Types
@@ -57,7 +57,7 @@ All pages use the View object to echo the HTML.
 To add a top-level menu page use the Menu_Page class.
 
 ```
-$menu_page = new Menu_Page( $page_title, $view_path, $capability = 'manage_options, $icon_url = null, $position = null, $view_data = array(), $parent_slug = null )
+$menu_page = new Menu_Page( $page_title, $view_path, $capability = 'manage_options, $icon_url = null, $position = null, $view_data = array(), $parent_slug = null );
 ```
 
 ### Removing Pages
@@ -75,14 +75,18 @@ Assign the file name to $view_file. If you need to pass any data to the View ass
 View::render() must be echoed.
 
 ```
-echo View::render( $view_file, $view_data = null )
+echo View::render( $view_file, $view_data = null );
 ```
 
 ## Settings
 
 You can create options for your plugin using the Settings class.
 
-$setting = new Settings( $page_slug ); // Creates the settings object with the slug of the page. This could be a default page or one you create. $setting->add_section( 'My Section', $view ); // Creates the settings section your options will be grouped under. The view will contain the header for the section. $setting->add_field( 'My Field', $view ); // Creates the field and adds it to the section. The view needs to contain the input field for the option.
+```
+$setting = new Settings( $page_slug ); // Creates the settings object with the slug of the page. This could be a default page or one you create.
+$setting->add_section( 'My Section', $view ); // Creates the settings section your options will be grouped under. The view will contain the header for the section.
+$setting->add_field( 'My Field', $view ); // Creates the field and adds it to the section. The view needs to contain the input field for the option.
+```
 
 ## Helper Functions
 

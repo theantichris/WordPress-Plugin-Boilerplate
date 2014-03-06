@@ -57,7 +57,7 @@ All pages use the View object to echo the HTML.
 To add a top-level menu page use the Menu_Page class.
 
 ```
-$menu_page = new Menu_Page( $page_title, $view_path, $capability = 'manage_options, $icon_url = null, $position = null, $view_data = array(), $parent_slug = null );
+$menu_page = new Menu_Page( $page_title, $view_path, $capability = 'manage_options', $icon_url = null, $position = null, $view_data = array(), $parent_slug = null );
 ```
 
 ### Removing Pages

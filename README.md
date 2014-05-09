@@ -4,6 +4,8 @@
 
 I have created a Composer package of just the framework part of this project (no plugin boilerplate). If you don't use Composer you can also just drop the framework files from the package and drop them into your plugin. The files have been refactored and namespaced to work with any plugin.
 
+You can view the Composer package at https://github.com/theantichris/wp-plugin-framework.
+
 ## Introduction
 
 This is an OOP framework for developing WordPress plugins.

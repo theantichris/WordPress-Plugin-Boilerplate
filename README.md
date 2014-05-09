@@ -1,5 +1,11 @@
 # WordPress Plugin Framework
 
+## Composer
+
+I have created a Composer package of just the framework part of this project (no plugin boilerplate). If you don't use Composer you can also just drop the framework files from the package and drop them into your plugin. The files have been refactored and namespaced to work with any plugin.
+
+## Introduction
+
 This is an OOP framework for developing WordPress plugins.
 
 The main class uses the Singleton pattern to make sure that only one instance of the plugin is ever created.

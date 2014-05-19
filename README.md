@@ -22,7 +22,7 @@ I have included a blank uninstall file that is setup to make sure it can only be
 
 All custom plugin functionality should be started in the run_plugin() method.
 
-This boilerplate includes an __OLDER__ version of my WordPress plugin framework. This allows you to easily create custom post types, pages, taxonomies, and views.
+This boilerplate includes an __OLDER__ version of my WordPress plugin framework. This allows you to easily create custom post types, pages, taxonomies, and views. You can get the update framework on its repo at https://github.com/theantichris/wp-plugin-framework.
 
 ## Instantiating Objects
 

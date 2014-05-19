@@ -1,4 +1,4 @@
-# WordPress Plugin Framework
+# WordPress Plugin Boilerplate
 
 ## Composer
 
@@ -6,9 +6,11 @@ I have created a Composer package of just the framework part of this project (no
 
 You can view the Composer package at https://github.com/theantichris/wp-plugin-framework.
 
+__All future development of this framework will be in the Composer repo and not here.__
+
 ## Introduction
 
-This is an OOP framework for developing WordPress plugins.
+This is an OOP boilerplate for developing WordPress plugins.
 
 The main class uses the Singleton pattern to make sure that only one instance of the plugin is ever created.
 
@@ -19,6 +21,8 @@ The base class sets up the text domain for internationalization and localization
 I have included a blank uninstall file that is setup to make sure it can only be called from the WordPress dashboard.
 
 All custom plugin functionality should be started in the run_plugin() method.
+
+This boilerplate includes an __OLDER__ version of my WordPress plugin framework. This allows you to easily create custom post types, pages, taxonomies, and views.
 
 ## Instantiating Objects
 

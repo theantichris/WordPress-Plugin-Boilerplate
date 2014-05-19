@@ -4,9 +4,7 @@
 
 I have created a Composer package of just the framework part of this project (no plugin boilerplate). If you don't use Composer you can also just drop the framework files from the package and drop them into your plugin. The files have been refactored and namespaced to work with any plugin.
 
-You can view the Composer package at https://github.com/theantichris/wp-plugin-framework.
-
-__All future development of this framework will be in the Composer repo and not here.__
+You can view the frameworks' repo at https://github.com/theantichris/wp-plugin-framework.
 
 ## Introduction
 
@@ -23,6 +21,8 @@ I have included a blank uninstall file that is setup to make sure it can only be
 All custom plugin functionality should be started in the run_plugin() method.
 
 This boilerplate includes an __OLDER__ version of my WordPress plugin framework. This allows you to easily create custom post types, pages, taxonomies, and views. You can get the update framework on its repo at https://github.com/theantichris/wp-plugin-framework.
+
+__All future development of the framework will be in its repo and not here.__
 
 ## Instantiating Objects
 

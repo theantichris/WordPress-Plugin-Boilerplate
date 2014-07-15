@@ -11,7 +11,7 @@ Blank methods for activation, deactivation, and registering scripts and styles a
 The base class sets up the text domain for internationalization and localization. Just drop your i18n and l10n files
 into the lang directory and change the $text_domain property to your text domain.
 
-I have included a blank uninstall file that is setup to make sure it can only be called from the WordPress dashboard.
+A blank uninstall file is included. It is setup to make sure it can only be called from the WordPress dashboard.
 
 All custom plugin functionality should be added to the __run_plugin()__ method.
 

@@ -10,12 +10,11 @@
   License: GPL V3
  */
 
-// TODO: Change class name to your plugin's name.
 class WordPress_Plugin_Boilerplate {
 	private static $instance = null;
 	private $plugin_path;
 	private $plugin_url;
-    private $text_domain = ''; // TODO: Change to your text domain.
+    private $text_domain = '';
 
 	/**
 	 * Creates or returns an instance of this class.

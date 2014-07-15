@@ -1,53 +1,24 @@
 <?php
 
 /*
-  Plugin Name: WordPress Plugin Framework
-  Plugin URI: https://github.com/theantichris/WordPress-Plugin-Framework
-  Description: My own framework for making WordPress plugins the way I do.
-  Version: 5.0.1
+  Plugin Name: WordPress Plugin Boilerplate
+  Plugin URI: https://github.com/theantichris/wordpress-plugin-boilerplate
+  Description: An object oriented boilerplate for developing a WordPress plugin.
+  Version: 6.0.0
   Author: Christopher Lamm
   Author URI: http://www.theantichris.com
-  License: GPL V2
+  License: GPL V3
  */
 
-/*
- * TODO: Replace plugin information header above.
- * TODO: Replace "WordPress Plugin Framework" with "Plugin Name".
- * TODO: Replace "WordPress_Plugin_Framework" with "Plugin_Name".
- * TODO: Replace "wordpress-plugin-framework" with "plugin-name".
- * TODO: Replace "WordPressPluginFramework" with "PluginName".
- */
-
-/**
- * Class WordPress_Plugin_Framework
- *
- * @package    WordPress
- * @subpackage WordPressPluginFramework
- *
- * @since      1.0.0
- */
-class WordPress_Plugin_Framework {
-	/** @var null|WordPress_Plugin_Framework Refers to a single instance of this class. */
+// TODO: Change class name to your plugin's name.
+class WordPress_Plugin_Boilerplate {
 	private static $instance = null;
-	/** @var  string The path to the plugin file. */
-	private static $plugin_path;
-	/** @var  string The URL to the plugin file. */
-	private static $plugin_url;
-	/** @var Custom_Post_Type[] Custom post type objects used by the plugin. */
-	private $custom_post_types = array();
-	/** @var Taxonomy[] Taxonomies objects used by the plugin. */
-	private $taxonomies = array();
-	/** @var Page[] Page objects used by the plugin. */
-	private $pages = array();
-	/** @var Settings[] Settings objects used by the plugin. */
-	private $settings = array();
+	private $plugin_path;
+	private $plugin_url;
+    private $text_domain = ''; // TODO: Change to your text domain.
 
 	/**
 	 * Creates or returns an instance of this class.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @return WordPress_Plugin_Framework A single instance of this class.
 	 */
 	public static function get_instance() {
 		// If an instance hasn't been create and set to $instance create an instance and set it to $instance.
@@ -60,204 +31,67 @@ class WordPress_Plugin_Framework {
 
 	/**
 	 * Initializes the plugin by setting localization, hooks, filters, and administrative functions.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @return WordPress_Plugin_Framework
 	 */
 	private function __construct() {
-		/* Includes */
-		include_once 'inc/custom-post-type.php';
-		include_once 'inc/page.php';
-		include_once 'inc/menu-page.php';
-		include_once 'inc/object-page.php';
-		include_once 'inc/options-page.php';
-		include_once 'inc/sub-menu-page.php';
-		include_once 'inc/utility-page.php';
-		include_once 'inc/settings.php';
-		include_once 'inc/taxonomy.php';
-		include_once 'inc/view.php';
+		$this->plugin_path = plugin_dir_path( __FILE__ );
+		$this->plugin_url  = plugin_dir_url( __FILE__ );
 
-		/* Set properties. */
-		self::$plugin_path = plugin_dir_path( __FILE__ );
-		self::$plugin_url  = plugin_dir_url( __FILE__ );
+		load_plugin_textdomain( $this->text_domain, false, $this->plugin_path . '/lang' );
 
-		/* Load text domain. */
-		load_plugin_textdomain( 'wordpress-plugin-framework', false, self::$plugin_path . '/lang' );
-
-		/* Load scripts and styles in the Dashboard. */
 		add_action( 'admin_enqueue_scripts', array( $this, 'register_scripts' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'register_styles' ) );
 
-		/* Load scripts and styles on the front end. */
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_scripts' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_styles' ) );
 
-		/* Register activation and deactivation hooks. */
 		register_activation_hook( __FILE__, array( $this, 'activation' ) );
 		register_deactivation_hook( __FILE__, array( $this, 'deactivation' ) );
 
-		/* Run plugin. */
 		$this->run_plugin();
 	}
 
-	/**
-	 * Returns $plugin_url.
-	 *
-	 * @since 5.0.1
-	 *
-	 * @return string
-	 */
-	public static function get_plugin_url() {
-		return self::$plugin_url;
+	public function get_plugin_url() {
+		return $this->plugin_url;
 	}
 
-	/**
-	 * Returns $plugin_path.
-	 *
-	 * @since 5.0.1
-	 *
-	 * @return string
-	 */
-	public static function get_plugin_path() {
-		return self::$plugin_path;
+	public function get_plugin_path() {
+		return $this->plugin_path;
 	}
 
-	/**
-	 * This method runs at plugin activation.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @return void
-	 */
-	public function activation() {
+    /**
+     * Place code that runs at plugin activation here.
+     */
+    public function activation() {
 
 	}
 
-	/**
-	 * This method runs at plugin deactivation.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @return void
-	 */
-	public function deactivation() {
+    /**
+     * Place code that runs at plugin deactivation here.
+     */
+    public function deactivation() {
 
 	}
 
-	/**
-	 * Place any scripts that need to be registered with WordPress in this method.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @return void
-	 */
-	public function register_scripts() {
+    /**
+     * Enqueue and register JavaScript files here.
+     */
+    public function register_scripts() {
 
 	}
 
-	/**
-	 * Place any styles that need to be registered with WordPress in this method.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @return void
-	 */
-	public function register_styles() {
+    /**
+     * Enqueue and register CSS files here.
+     */
+    public function register_styles() {
 
 	}
 
-	/**
-	 * Method containing the plugin functionality. Place your code here.
-	 *
-	 * @since 4.1.0
-	 *
-	 * @return void
-	 */
-	private function run_plugin() {
+    /**
+     * Place code for your plugin's functionality here.
+     */
+    private function run_plugin() {
 
-	}
-
-	/**
-	 * If WordPress debugging is turned on this method will write data to debug.log located in the wp-content directory.
-	 *
-	 * Add the following lines to wp-config.php:
-	 *
-	 * define( 'WP_DEBUG', true );  // Turn debugging ON
-	 * define( 'SAVEQUERIES', true );
-	 * define( 'WP_DEBUG_DISPLAY', false ); // Turn forced display OFF
-	 * define( 'WP_DEBUG_LOG', true );  // Turn logging to wp-content/debug.log ON
-	 *
-	 * @since 1.0.0
-	 *
-	 * @param mixed $message Message to pass to the error log.
-	 *
-	 * @return void
-	 */
-	public static function print_to_log( $message ) {
-		if ( true === WP_DEBUG ) {
-			if ( is_array( $message ) || is_object( $message ) ) {
-				error_log( print_r( $message ), true );
-			} else {
-				error_log( $message );
-			}
-		}
-	}
-
-	/**
-	 * Takes a plural string and returns the singular version.
-	 *
-	 * Solution found at https://sites.google.com/site/chrelad/notes-1/pluraltosingularwithphp.
-	 *
-	 * @since 2.0.0
-	 *
-	 * @param string $word Plural string to make singular.
-	 *
-	 * @return string
-	 */
-	public static function make_singular( $word ) {
-		$rules = array(
-			'ss'  => false,
-			'os'  => 'o',
-			'ies' => 'y',
-			'xes' => 'x',
-			'oes' => 'o',
-			'ves' => 'f',
-			's'   => ''
-		);
-
-		// Loop through all the rules and do the replacement.
-		foreach ( array_keys( $rules ) as $key ) {
-			// If the end of the word doesn't match the key, it's not a candidate for replacement. Move on to the next plural ending.
-
-			if ( substr( $word, ( strlen( $key ) * -1 ) ) != $key ) {
-				continue;
-			}
-
-			// If the value of the key is false, stop looping and return the original version of the word.
-			if ( $key === false ) {
-				return $word;
-			}
-
-			// We've made it this far, so we can do the replacement.
-			return substr( $word, 0, strlen( $word ) - strlen( $key ) ) . $rules[ $key ];
-		}
-
-		return $word;
-	}
-
-	/**
-	 * Makes WordPress slug by making the string lowercase and replacing spaces with hyphens.
-	 *
-	 * @since 3.1.0
-	 *
-	 * @param $string String to make a slug out of.
-	 *
-	 * @return string
-	 */
-	public static function make_slug( $string ) {
-		return str_replace( ' ', '-', strtolower( $string ) );
 	}
 }
 
-WordPress_Plugin_Framework::get_instance();
+WordPress_Plugin_Boilerplate::get_instance();

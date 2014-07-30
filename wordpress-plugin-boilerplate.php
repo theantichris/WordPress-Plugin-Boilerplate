@@ -20,7 +20,7 @@ class WordPress_Plugin_Boilerplate {
 	 * Creates or returns an instance of this class.
 	 */
 	public static function get_instance() {
-		// If an instance hasn't been create and set to $instance create an instance and set it to $instance.
+		// If an instance hasn't been created and set to $instance create an instance and set it to $instance.
 		if ( null == self::$instance ) {
 			self::$instance = new self;
 		}

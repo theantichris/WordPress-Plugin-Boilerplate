@@ -35,7 +35,7 @@ class WordPress_Plugin_Boilerplate {
 		$this->plugin_path = plugin_dir_path( __FILE__ );
 		$this->plugin_url  = plugin_dir_url( __FILE__ );
 
-		load_plugin_textdomain( $this->text_domain, false, 'lang' );
+		load_plugin_textdomain( $this->text_domain, false, $plugin_path + '\lang' );
 
 		add_action( 'admin_enqueue_scripts', array( $this, 'register_scripts' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'register_styles' ) );
